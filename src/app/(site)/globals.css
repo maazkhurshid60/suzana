@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  font-family: var(--font-body), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: theme('colors.neutral.50');
+  color: theme('colors.neutral.900');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), Georgia, serif;
+  font-weight: 400;
+}
+
+::selection {
+  background: theme('colors.neutral.900');
+  color: theme('colors.neutral.50');
+}
+
+/* Scroll reveal, applied by the Reveal component only after hydration. */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Visible keyboard focus everywhere, invisible for mouse and touch. */
+:focus-visible {
+  outline: 2px solid theme('colors.neutral.900');
+  outline-offset: 3px;
+}
+.bg-neutral-950 :focus-visible,
+footer :focus-visible {
+  outline-color: theme('colors.white');
+}
+
+/* Faint blueprint grid for the dark inner-page hero. */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 75% 40%, black 10%, transparent 70%);
+}
