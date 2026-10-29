@@ -37,11 +37,11 @@ export const areas: Link[] = [
 // Every project starts without written permission on file (copy document item 5).
 // Projects without permission are hidden from the public build.
 // Photos are placeholders until the 2023 shoot originals arrive. They show in review and preview
-// builds with a "Placeholder photo" tag and never in the public build.
+// builds and never in the public build.
 const placeholder = (file: string, label: string) => ({
   label,
   src: `/media/placeholders/${file}`,
-  alt: 'Placeholder photo, not this project',
+  alt: '',
   placeholder: true,
 });
 

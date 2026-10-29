@@ -2,7 +2,8 @@ import { Clock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { Flags } from '@/components/Flags';
 import { Section, SectionHeading } from '@/components/blocks/Section';
-import { getBusiness, getContactPage } from '@/lib/content';
+import { PageHero } from '@/components/Heroes';
+import { getBusiness, getChrome, getContactPage } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata() {
@@ -10,7 +11,7 @@ export async function generateMetadata() {
 }
 
 export default async function ContactPage() {
-  const [contact, business] = await Promise.all([getContactPage(), getBusiness()]);
+  const [contact, business, chrome] = await Promise.all([getContactPage(), getBusiness(), getChrome()]);
 
   const details = [
     {
@@ -62,13 +63,13 @@ export default async function ContactPage() {
 
   return (
     <>
-      <section className="bg-neutral-50 pb-6 pt-[150px] md:pt-[180px]">
-        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h1 className="max-w-4xl text-[clamp(2.75rem,6.5vw,5.5rem)] font-light leading-[1.02] text-neutral-950">{contact.h1}</h1>
-          <p className="mt-6 font-heading text-2xl italic text-neutral-500 md:text-3xl">{contact.sub}</p>
-          <Flags flags={contact.review} className="mt-8 max-w-3xl" />
-        </div>
-      </section>
+      <PageHero
+        hero={{ h1: contact.h1, sub: contact.sub, ctas: [], image: contact.heroImage }}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact', href: contact.path }]}
+        labels={chrome.buttonLabels}
+        logo={chrome.logo}
+      />
+      <Flags flags={contact.review} className="mx-auto max-w-3xl px-4" />
 
       <Section tone="light">
         <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">

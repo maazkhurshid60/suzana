@@ -57,6 +57,13 @@ export const page = defineType({
         defineField({ name: 'sub', title: 'Sub-headline', type: 'text', rows: 2, validation: (r) => [r.required(), houseStyle(r)] }),
         defineField({ name: 'trust', title: 'Trust line', type: 'text', rows: 2, validation: houseStyle }),
         defineField({
+          name: 'backgroundImage',
+          title: 'Background photo',
+          type: 'image',
+          options: { hotspot: true },
+          description: 'Shown behind the title, darkened so the text stays readable. Wide photos work best. Set the focus point to keep the subject in view.',
+        }),
+        defineField({
           name: 'ctas',
           title: 'Buttons',
           type: 'array',
@@ -179,6 +186,14 @@ export const contactPage = defineType({
   fields: [
     defineField({ name: 'h1', title: 'Main title', type: 'string', group: 'content', validation: (r) => [r.required(), houseStyle(r)] }),
     defineField({ name: 'sub', title: 'Sub-headline', type: 'string', group: 'content', validation: houseStyle }),
+    defineField({
+      name: 'heroImage',
+      title: 'Background photo',
+      type: 'image',
+      group: 'content',
+      options: { hotspot: true },
+      description: 'Shown behind the title, darkened so the text stays readable.',
+    }),
     defineField({ name: 'whatHappensHeading', type: 'string', group: 'content' }),
     defineField({ name: 'whatHappens', type: 'array', group: 'content', of: [defineArrayMember({ type: 'text', validation: houseStyle })] }),
     defineField({ name: 'getInTouchHeading', type: 'string', group: 'content' }),

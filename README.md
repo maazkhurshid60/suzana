@@ -8,7 +8,7 @@ as the source of truth for every word.
 
 ```bash
 npm install
-npm run dev          # http://localhost:3000, review mode
+npm run dev          # http://localhost:3000, clean preview mode (set NEXT_PUBLIC_SITE_MODE=review to see the copy notes)
 npm run build && npm start
 ```
 

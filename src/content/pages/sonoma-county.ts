@@ -17,6 +17,7 @@ export const sonomaCounty: PageContent = {
   ],
   hero: {
     h1: 'Custom home builder in Sonoma County',
+    image: '/media/photos/hero-sonoma.jpg',
     sub: 'A St. Helena builder working in Healdsburg, Santa Rosa and Glen Ellen, for a small number of projects at a time.',
     ctas: ['conversation'],
   },
@@ -28,6 +29,10 @@ export const sonomaCounty: PageContent = {
         'The office and the cabinet shop are in St. Helena, and most of our work is in Napa Valley. We build in Sonoma County for select projects, which is a real limit rather than a polite one. Five or six builds run at a time and Gar is on each site, so distance is a scheduling fact rather than a preference.',
         'In practice that means the work we take here is work worth the drive, and we will say so early if a project is better served by somebody closer.',
       ],
+    },
+    {
+      type: 'image',
+      image: { src: '/media/photos/sonoma-vineyard.jpg', label: 'A Sonoma County vineyard', alt: 'A Sonoma County vineyard' },
     },
     {
       type: 'places',

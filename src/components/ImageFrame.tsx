@@ -5,7 +5,7 @@ import { hasPhoto, REVIEW_MODE } from '@/lib/review';
 
 /**
  * A photo position from the copy document. A real photo always shows. A placeholder photo shows in
- * review and preview with a "Placeholder photo" tag, and never in the public build. An empty slot
+ * review and preview, and never in the public build. An empty slot
  * shows a labelled box in review mode only.
  * Image rules: no people in frame, no street numbers, no filenames naming the street or client.
  */
@@ -14,11 +14,6 @@ export function ImageFrame({ image, className = '' }: { image: ImageSlot; classN
     return (
       <div className={`relative overflow-hidden rounded-[28px] bg-neutral-200 ${className}`}>
         <Image src={image.src} alt={image.alt ?? ''} fill sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
-        {image.placeholder && (
-          <span className="absolute left-4 top-4 rounded-full bg-black/55 px-3 py-1 font-label text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-            Placeholder photo
-          </span>
-        )}
       </div>
     );
   }

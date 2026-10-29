@@ -1,6 +1,6 @@
 // Three ways to build the site, set with NEXT_PUBLIC_SITE_MODE:
-//   review   (default) every copy-document flag shown inline, for working through the open items
-//   preview  clean, for showing the client: flags hidden, but projects still awaiting permission and
+//   review   every copy-document flag shown inline, for working through the open items
+//   preview  (default) clean, for showing the client: flags hidden, but projects still awaiting permission and
 //            placeholder photos are shown so the pages look finished
 //   public   the launch build: only approved content, no placeholders
 // The older NEXT_PUBLIC_REVIEW_MODE=false still means public.
@@ -9,7 +9,7 @@ type SiteMode = 'review' | 'preview' | 'public';
 function readMode(): SiteMode {
   const mode = process.env.NEXT_PUBLIC_SITE_MODE;
   if (mode === 'review' || mode === 'preview' || mode === 'public') return mode;
-  return process.env.NEXT_PUBLIC_REVIEW_MODE === 'false' ? 'public' : 'review';
+  return process.env.NEXT_PUBLIC_REVIEW_MODE === 'false' ? 'public' : 'preview';
 }
 
 export const SITE_MODE = readMode();

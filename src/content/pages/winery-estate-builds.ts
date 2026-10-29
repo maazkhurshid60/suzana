@@ -17,6 +17,7 @@ export const wineryEstateBuilds: PageContent = {
   ],
   hero: {
     h1: 'Winery and estate builds in Napa Valley',
+    image: '/media/photos/hero-estate-hills.jpg',
     sub: 'Properties where the house is one building among several, and the ground comes before the framing.',
     ctas: ['conversation'],
   },
@@ -28,6 +29,10 @@ export const wineryEstateBuilds: PageContent = {
         'On a property of this size, the first year is rarely about the house. It is access, grading, drainage, utilities and the order in which buildings have to go up. A main residence, a guest house, a barn and a pool do not get built in parallel on a hillside, and the sequence is decided long before anyone pours a foundation.',
         'That work does not photograph well and it is most of what separates a build that lands on schedule from one that does not.',
       ],
+    },
+    {
+      type: 'image',
+      image: { src: '/media/photos/vineyard-hills.jpg', label: 'Rolling vineyard hills in Napa Valley', alt: 'Rolling vineyard hills in Napa Valley' },
     },
     {
       type: 'prose',

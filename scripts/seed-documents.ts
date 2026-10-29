@@ -106,7 +106,7 @@ export function pageDoc(page: PageContent) {
     _type: 'page',
     path: page.path,
     eyebrow: page.eyebrow,
-    hero: { ...page.hero, flags: undefined, reviewNotes: notes(page.hero.flags) },
+    hero: { ...page.hero, flags: undefined, image: undefined, reviewNotes: notes(page.hero.flags) },
     blocks: page.blocks.map(block).filter(Boolean),
     cta: page.cta,
     meta: page.meta,

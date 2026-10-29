@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Pause, Play } from 'lucide-react';
 
 /** Background film with a pause control. Does not autoplay for visitors who prefer reduced motion. */
-export function HeroVideo({ src }: { src: string }) {
+export function HeroVideo({ src, poster }: { src: string; poster?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -34,6 +34,7 @@ export function HeroVideo({ src }: { src: string }) {
       <video
         ref={ref}
         src={src}
+        poster={poster}
         className="absolute inset-0 h-full w-full object-cover"
         muted
         loop

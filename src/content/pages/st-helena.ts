@@ -17,6 +17,7 @@ export const stHelena: PageContent = {
   ],
   hero: {
     h1: 'Custom home builder in St. Helena',
+    image: '/media/photos/hero-st-helena.jpg',
     sub: 'The office and the cabinet shop are on Charter Oak Avenue. Most of what we have built recently is within a few minutes of them.',
     ctas: ['conversation', 'work'],
     workHref: '#recent-work',

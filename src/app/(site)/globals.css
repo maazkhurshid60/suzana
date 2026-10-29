@@ -41,9 +41,25 @@ h4 {
   transform: none;
 }
 
+/* Inner-page hero photo settles in with a slow zoom out. */
+.hero-photo {
+  animation: hero-settle 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes hero-settle {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero-photo {
+    animation: none;
   }
 }
 

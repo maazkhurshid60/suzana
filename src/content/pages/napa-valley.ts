@@ -11,6 +11,7 @@ export const napaValley: PageContent = {
   eyebrow: 'Areas',
   hero: {
     h1: 'Custom home builder in Napa Valley',
+    image: '/media/photos/hero-napa-valley.jpg',
     sub: 'Gar Rector & Associates builds in St. Helena, Napa, Yountville, Calistoga, Oakville and Rutherford, with 25 permitted projects on public record.',
     ctas: ['conversation', 'work'],
     workHref: '#recent-work',
@@ -26,6 +27,10 @@ export const napaValley: PageContent = {
         },
         'Being close matters more than it sounds. Gar is on the job site running the work, across five or six builds at a time, and that is a different proposition when the sites are twenty minutes apart than when they are not.',
       ],
+    },
+    {
+      type: 'image',
+      image: { src: '/media/photos/napa-valley-floor.jpg', label: 'Vineyard rows on the Napa Valley floor, with the hills behind', alt: 'Vineyard rows on the Napa Valley floor, with the hills behind' },
     },
     {
       type: 'prose',

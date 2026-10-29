@@ -11,6 +11,7 @@ export const contact: ContactContent = {
   },
   h1: 'Talk to Gar about your project',
   sub: 'The first step is a conversation, not a quote.',
+  heroImage: '/media/photos/hero-contact.jpg',
   review: [
     {
       kind: 'hold',

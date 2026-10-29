@@ -35,7 +35,7 @@ export type SanityPage = {
   path: string;
   eyebrow?: string;
   meta?: { title: string; description: string };
-  hero?: PageContent['hero'] & { reviewNotes?: SanityNote[] };
+  hero?: Omit<PageContent['hero'], 'image'> & { reviewNotes?: SanityNote[]; backgroundImage?: SanityImageSource & { asset?: unknown } };
   blocks?: SanityBlock[];
   cta?: { heading?: string; text?: string };
   reviewNotes?: SanityNote[];
@@ -57,6 +57,7 @@ export type SanityContact = {
   meta?: { title: string; description: string };
   h1?: string;
   sub?: string;
+  heroImage?: SanityImageSource & { asset?: unknown };
   whatHappensHeading?: string;
   whatHappens?: string[];
   getInTouchHeading?: string;
@@ -90,7 +91,7 @@ function photo(slot?: SanityPhoto): ImageSlot | undefined {
   if (!slot || (!slot.label && !slot.image?.asset && !slot.placeholderSrc)) return undefined;
   const label = slot.label ?? '';
   if (slot.image?.asset) return { label, alt: slot.alt, src: imageUrl(slot.image) };
-  if (slot.placeholderSrc) return { label, alt: 'Placeholder photo, not this project', src: slot.placeholderSrc, placeholder: true };
+  if (slot.placeholderSrc) return { label, alt: slot.alt ?? '', src: slot.placeholderSrc, placeholder: true };
   return { label };
 }
 
@@ -199,6 +200,7 @@ export function mapPage(doc: SanityPage): PageContent {
       trust: doc.hero?.trust,
       ctas: doc.hero?.ctas?.length ? doc.hero.ctas : ['conversation'],
       workHref: doc.hero?.workHref,
+      image: doc.hero?.backgroundImage?.asset ? imageUrl(doc.hero.backgroundImage, 2400) : undefined,
       flags: notes(doc.hero?.reviewNotes),
     },
     review: notes(doc.reviewNotes),
@@ -250,6 +252,7 @@ export function mapContact(doc: SanityContact, fallback: ContactContent): Contac
     meta: doc.meta ?? fallback.meta,
     h1: doc.h1 ?? fallback.h1,
     sub: doc.sub ?? fallback.sub,
+    heroImage: doc.heroImage?.asset ? imageUrl(doc.heroImage, 2400) : fallback.heroImage,
     review: notes(doc.reviewNotes),
     whatHappens: {
       heading: doc.whatHappensHeading ?? fallback.whatHappens.heading,

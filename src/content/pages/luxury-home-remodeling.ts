@@ -11,6 +11,7 @@ export const luxuryHomeRemodeling: PageContent = {
   eyebrow: 'Services',
   hero: {
     h1: 'Home remodeling in Napa Valley',
+    image: '/media/photos/hero-remodeling.jpg',
     sub: 'Houses rebuilt to the studs, by the builder who runs the job on site.',
     ctas: ['conversation'],
   },

@@ -128,6 +128,8 @@ export type PageContent = {
     ctas: HeroCta[];
     /** Where "See the work" points on this page. */
     workHref?: string;
+    /** Photo behind the title. Decorative, so it needs no description. */
+    image?: string;
     flags?: Flag[];
   };
   /** Page-level notes from the document, such as a recommendation to hold the page. */
@@ -160,6 +162,8 @@ export type ContactContent = {
   meta: { title: string; description: string };
   h1: string;
   sub: string;
+  /** Photo behind the title. */
+  heroImage?: string;
   review?: Flag[];
   whatHappens: { heading: string; body: string[] };
   getInTouchHeading: string;

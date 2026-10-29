@@ -11,6 +11,7 @@ type Hero = PageContent['hero'];
 type Labels = SiteChrome['buttonLabels'];
 
 function HeroCtas({ hero, labels, onDark }: { hero: Hero; labels: Labels; onDark: boolean }) {
+  if (!hero.ctas.length) return null;
   return (
     <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
       {hero.ctas.map((cta) =>
@@ -33,7 +34,8 @@ export function HomeHero({ hero, labels, video }: { hero: Hero; labels: Labels; 
   return (
     <section className="relative bg-neutral-50 px-3 pb-10 pt-[90px] md:px-5 md:pb-14 lg:px-6">
       <div className="relative mx-auto w-full overflow-hidden rounded-[28px] bg-neutral-950 md:rounded-[36px]">
-        <HeroVideo src={video} />
+        {/* The built-in film has a still frame to show while it loads. A film uploaded in the dashboard starts on black. */}
+        <HeroVideo src={video} poster={video === '/media/hero.mp4' ? '/media/hero-poster.jpg' : undefined} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/25" />
         <div className="relative z-10 mx-auto flex min-h-[min(78vh,820px)] w-full max-w-5xl flex-col items-center justify-center px-5 py-24 text-center md:py-36">
           <h1 className="text-[clamp(2.75rem,7vw,6rem)] font-light leading-[1.02] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
@@ -67,21 +69,32 @@ export function PageHero({
   return (
     <section className="relative bg-neutral-50 px-3 pb-10 pt-[90px] md:px-5 md:pb-14 lg:px-6">
       <div className="relative mx-auto w-full overflow-hidden rounded-[28px] bg-neutral-950 md:rounded-[36px]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.10),transparent_55%)]" />
-        <div className="blueprint-grid absolute inset-0" aria-hidden="true" />
-        {/* The logo's building drawing, reversed and faint, as an architectural motif. The frame
-            crops off the lettering beneath it so it reads as a line drawing, not a watermark. */}
-        <div
-          className="pointer-events-none absolute -right-[4%] top-1/2 hidden w-[44%] max-w-[620px] -translate-y-1/2 select-none overflow-hidden opacity-[0.07] md:block"
-          style={{ aspectRatio: `${logo.width} / ${Math.round(logo.height * 0.8)}` }}
-          aria-hidden="true"
-        >
-          <Image src={logo.src} alt="" width={logo.width} height={logo.height} className="w-full invert" />
-        </div>
+        {hero.image ? (
+          <>
+            <Image src={hero.image} alt="" fill priority sizes="100vw" className="hero-photo object-cover" />
+            {/* Darkest behind the text on the left, so the photo shows through on the right. */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" aria-hidden="true" />
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.10),transparent_55%)]" />
+            <div className="blueprint-grid absolute inset-0" aria-hidden="true" />
+            {/* The logo's building drawing, reversed and faint, as an architectural motif. The frame
+                crops off the lettering beneath it so it reads as a line drawing, not a watermark. */}
+            <div
+              className="pointer-events-none absolute -right-[4%] top-1/2 hidden w-[44%] max-w-[620px] -translate-y-1/2 select-none overflow-hidden opacity-[0.07] md:block"
+              style={{ aspectRatio: `${logo.width} / ${Math.round(logo.height * 0.8)}` }}
+              aria-hidden="true"
+            >
+              <Image src={logo.src} alt="" width={logo.width} height={logo.height} className="w-full invert" />
+            </div>
+          </>
+        )}
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 md:px-12 md:py-28 lg:py-32">
           <Breadcrumbs crumbs={crumbs} />
           <h1 className="max-w-4xl text-[clamp(2.5rem,6vw,5.25rem)] font-light leading-[1.04] text-white">{hero.h1}</h1>
-          <p className="mt-7 max-w-2xl text-base font-light leading-relaxed text-white/80 md:text-lg">{hero.sub}</p>
+          <p className="mt-7 max-w-2xl text-base font-light leading-relaxed text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.4)] md:text-lg">{hero.sub}</p>
           {hero.trust && (
             <p className="mt-6 max-w-2xl border-l border-white/25 pl-5 font-heading text-xl italic leading-snug text-white/75">
               {hero.trust}

@@ -11,6 +11,7 @@ export const customHomeBuilding: PageContent = {
   eyebrow: 'Services',
   hero: {
     h1: 'Custom home building in Napa Valley',
+    image: '/media/photos/hero-custom-home.jpg',
     sub: 'High-end homes built from your architect’s drawings, run day to day by the builder whose name is on them.',
     trust:
       'Gar Rector & Associates has built in Napa Valley for more than thirty years, with 25 permitted projects on public record.',

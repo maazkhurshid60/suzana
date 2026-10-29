@@ -13,6 +13,7 @@ export const customCabinetry: PageContent = {
   eyebrow: 'Services',
   hero: {
     h1: 'Cabinetry and millwork, made in St. Helena',
+    image: '/media/photos/hero-cabinet-shop.jpg',
     sub: 'A three-person shop, a cabinetmaker with thirty years at the bench, and the finish work running on our own calendar.',
     ctas: ['conversation'],
     flags: [
