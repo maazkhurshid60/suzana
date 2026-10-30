@@ -7,6 +7,7 @@ import { structureTool } from 'sanity/structure';
 import { openOnSite } from './src/sanity/actions';
 import { apiVersion, dataset, projectId } from './src/sanity/env';
 import { homeTool } from './src/sanity/HomeTool';
+import { DocumentInput } from './src/sanity/PublishBlockers';
 import { schemaTypes, singletons } from './src/sanity/schemaTypes';
 import { structure } from './src/sanity/structure';
 
@@ -60,6 +61,8 @@ export default defineConfig({
     // Business details, Header and footer, and the Contact page exist once, so "New document" leaves them out.
     templates: (templates) => templates.filter(({ schemaType }) => !singletons.includes(schemaType)),
   },
+  // Lists anything blocking Publish at the top of the form, with the tab it is on.
+  form: { components: { input: DocumentInput } },
   document: {
     actions: (actions, { schemaType }) => {
       const kept = singletons.includes(schemaType)

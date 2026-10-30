@@ -18,8 +18,9 @@ const seo = defineField({
   type: 'object',
   group: 'seo',
   fields: [
-    defineField({ name: 'title', type: 'string', validation: (r) => r.required().max(70) }),
-    defineField({ name: 'description', type: 'text', rows: 3, validation: (r) => r.required().max(170) }),
+    // Length is advice (Google cuts long titles off), so it warns rather than blocking Publish.
+    defineField({ name: 'title', type: 'string', validation: (r) => [r.required(), r.max(70).warning()] }),
+    defineField({ name: 'description', type: 'text', rows: 3, validation: (r) => [r.required(), r.max(170).warning()] }),
   ],
 });
 
