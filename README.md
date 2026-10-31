@@ -75,16 +75,9 @@ shows these steps.
 
 ### Publishing goes live
 
-In development (`npm run dev`) every page load reads the dashboard fresh, so a published change
-shows on the next refresh. Every build also starts fresh (`prebuild` clears the cached Sanity data,
-which the host would otherwise carry over between deploys).
-
-On the live site pages are cached and refresh at least hourly. For changes to go live within seconds, add a webhook
-in the Sanity project's **API → Webhooks**:
-
-- URL: `https://<site address>/api/revalidate/`
-- Trigger on: create, update, delete. Dataset: `production`
-- Secret: any long random string, also set as `SANITY_REVALIDATE_SECRET` on the host.
+Every page load reads the dashboard fresh, in development and on the live site, so a published
+change shows on the next refresh. No webhook is needed. (`/api/revalidate/` is still there if pages
+are ever cached again.)
 
 ## Site modes
 

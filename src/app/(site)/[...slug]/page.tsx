@@ -4,7 +4,7 @@ import { getPage, getPagePaths } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
 
 // Every page except the homepage and Contact. Pages added in the dashboard work without new code:
-// they render on first visit and are cached, and publishing refreshes them through the webhook.
+// every visit renders them fresh from the dashboard.
 type Props = { params: Promise<{ slug: string[] }> };
 
 const toPath = (slug: string[]) => `/${slug.join('/')}/`;

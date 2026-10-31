@@ -20,10 +20,9 @@ const localPages = Object.values(localPageMap);
 
 const fetchSanity = cache(async (query: string, params: Record<string, string> = {}): Promise<unknown> => {
   if (!client) return null;
-  // Development reads fresh on every load. Production caches for an hour, and the publish webhook
-  // (/api/revalidate/) clears the cache the moment something is published.
-  const revalidate = process.env.NODE_ENV === 'development' ? 0 : 3600;
-  return client.fetch(query, params, { next: { revalidate, tags: [SANITY_TAG] } });
+  // Every page load reads the dashboard fresh, so a publish shows on the next refresh with no
+  // webhook needed.
+  return client.fetch(query, params, { cache: 'no-store', next: { tags: [SANITY_TAG] } });
 });
 
 const sanityHasPages = cache(async () => Boolean(await fetchSanity('count(*[_type == "page"]) > 0')));

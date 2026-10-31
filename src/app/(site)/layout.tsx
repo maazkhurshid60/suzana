@@ -11,6 +11,9 @@ import { getBusiness, getChrome } from '@/lib/content';
 import { INDEXABLE } from '@/lib/review';
 import './globals.css';
 
+// Render on every request so dashboard changes show on the next page load.
+export const dynamic = 'force-dynamic';
+
 const heading = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
