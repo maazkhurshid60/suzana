@@ -1,6 +1,7 @@
-import { permissionFlag, placeholderPhoto, projects, shared, testimonialFlag } from '../site';
+import { permissionFlag, placeholderPhoto, projects } from '../site';
 import type { PageContent } from '../types';
 
+// Copy: "Custom home building page: copy update (V2)", November 5, 2026.
 export const customHomeBuilding: PageContent = {
   path: '/services/custom-home-building/',
   meta: {
@@ -12,93 +13,79 @@ export const customHomeBuilding: PageContent = {
   hero: {
     h1: 'Custom home building in Napa Valley',
     image: '/media/photos/hero-custom-home.jpg',
-    sub: 'High-end homes built from your architect’s drawings, run day to day by the builder whose name is on them.',
-    trust:
-      'Gar Rector & Associates has built in Napa Valley for more than thirty years, with 25 permitted projects on public record.',
+    sub: 'Residential construction executed in direct collaboration with architects and estate owners.',
+    trust: 'Building in St. Helena and throughout Napa Valley since 1991.',
     ctas: ['conversation'],
-    flags: [
-      {
-        kind: 'input',
-        text: 'Item 14. No “since” line goes in the hero until item 14 closes. Four sources give four answers.',
-      },
-    ],
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'You have the drawings. The question is who builds them.',
+      heading: 'Construction grounded in architectural drawings',
       body: [
-        'Most people who get in touch already have a site and an architect. What they are deciding is who runs the job from there.',
-        'Three things are usually on their mind. Whether the person they meet first is the person who will be on site. Whether a drawing that is difficult to build gets built, or gets quietly simplified in the field. Whether the cabinetry and millwork arrive on a schedule somebody else controls.',
-        'Gar Rector & Associates is set up so the answer to all three is the same. Gar runs the work. We build what the architect drew. The cabinetry is made in our own shop in St. Helena.',
+        'In Napa Valley, unbuilt land is rare. Most ground-up residential builds require tearing down an existing structure or navigating severe hillside topography, strict agricultural boundaries, and tight setbacks. These parcels demand a builder who understands how to execute drawings without compromising details or improvising in the field.',
+        'Gar Rector & Associates builds in direct partnership with independent architecture firms and property owners. Our role is never to alter the design intent, but to navigate the physical constraints of the site and construct the home precisely as drawn. We deliberately limit our capacity to five or six active builds, ensuring every foundation, steel frame, and custom assembly receives the focus and technical oversight it demands.',
       ],
     },
     {
       type: 'prose',
       heading: 'How we build',
       body: [
-        'Every job comes down to who is on the site, how closely the build follows the drawings, and who makes the finish work.',
+        'A successful build requires a disciplined division of responsibility between design coordination, site logistics, and daily field execution.',
       ],
       subsections: [
         {
-          heading: 'Gar runs the job',
+          heading: 'Early architectural collaboration',
           body: [
-            'Gar Rector is on the job site running the work. The person you meet first is the person running your build, from groundbreaking through the final walkthrough. Five or six builds run at a time, which is the number that keeps that true.',
-          ],
-          flags: [
-            {
-              kind: 'input',
-              text: 'Item 2. What a normal week looks like across live sites, and who the client and architect call when Gar is off site. This is the central claim of the brand and it currently has no operational detail behind it.',
-            },
+            'We review drawing sets alongside client-retained architects early in the process to evaluate structural tolerances, site logistics, and trade sequencing. When complex site conditions or engineering interfaces present unexpected challenges, Gar works directly with the design team to develop practical field solutions that protect the architecture’s visual lines and spatial flow.',
           ],
         },
         {
-          heading: 'We build from your architect’s drawings',
+          heading: 'Principal oversight on design decisions',
           body: [
-            `${shared.architect} Where a detail is hard to build, we work it out with the design team rather than around them.`,
-            'That covers the awkward parts as well as the straightforward ones. A hillside site with a narrow approach, a tear-down inside city limits, a utility connection that sets the schedule: the drawings stay the architect’s, and the site conditions are ours to solve.',
+            'Gar Rector manages design coordination, trade partner selection, and key structural milestones. Rather than handing a project off to a junior manager, Gar stays actively involved on site, reviewing framing lines, structural steel connections, and finish interfaces alongside the design team. When strategic decisions or plan adjustments arise, architects and owners work directly with Gar.',
           ],
         },
         {
-          heading: 'Cabinetry and millwork from our own shop',
+          heading: 'Dedicated lead foremen on site',
           body: [
-            {
-              text: 'Cabinetry, paneling and millwork are built in our own shop in St. Helena, by a three-person team led by a cabinetmaker with roughly thirty years at the bench. Gar bought the tools and built the shop out so the finish work runs on our schedule. One company, one standard, one calendar.',
-              links: [{ label: 'Custom Cabinetry', href: '/services/custom-cabinetry/' }],
-            },
+            'Every project is assigned a dedicated lead foreman who remains on the job site every working day from ground-breaking through the final punch list. Supported by our St. Helena office staff, the lead foreman directs specialized trade crews, enforces site standards, and maintains the build sequence so work moves forward with quiet discipline.',
           ],
         },
       ],
     },
     {
       type: 'glance',
+      heading: 'Project operations',
       rows: [
         {
-          label: 'Who it is for',
-          value: 'Owners and architects building high-end homes in Napa Valley, and in Sonoma County for select projects',
+          label: 'Locations served',
+          value: 'St. Helena, Napa, Yountville, Calistoga, Oakville, and Rutherford. Select projects in Sonoma County.',
         },
-        { label: 'Where we build', value: shared.whereWeBuild },
+        { label: 'Active capacity', value: 'Five to six active builds at a time, protecting personal oversight across every site.' },
         {
-          label: 'Active capacity',
-          value: 'Five or six builds at a time. 20 to 25 staff plus subcontractors, three of them in the cabinet shop',
-        },
-        {
-          label: 'Scope',
+          label: 'Working arrangement',
           value:
-            'Full-structure residential construction, site work and infrastructure, coordination with your architect and engineer, cabinetry and millwork from our own shop',
+            'Direct collaboration with retained architects. Gar oversees design and structural milestones; dedicated lead foremen run daily field operations.',
         },
-        { label: 'How the number gets built', value: shared.budget },
         {
-          label: 'Timeline',
-          flags: [{ kind: 'input', text: 'Item 4. Typical duration, first conversation to final walkthrough.' }],
+          label: 'Scope of work',
+          value:
+            'Ground-up custom residences, complex hillside foundations, structural steel, timber framing, and complete site coordination.',
         },
-        { label: 'License', value: 'California CSLB 664538, General Building (B)' },
+        {
+          label: 'Administrative support',
+          value: 'Dedicated office team coordinating project administration, trade contracts, and client billing.',
+        },
+        {
+          label: 'Build duration',
+          flags: [{ kind: 'input', text: 'Typical duration range from groundbreaking to occupancy.' }],
+        },
       ],
     },
     {
       type: 'projects',
       id: 'recent-work',
-      heading: 'Recent work',
+      heading: 'Selected custom residences',
       image: placeholderPhoto('vineyard-estate.jpg', 'Quail Camp aerial with the vineyard rows, full width'),
       items: [
         {
@@ -118,8 +105,17 @@ export const customHomeBuilding: PageContent = {
         },
       ],
       flags: [
-        permissionFlag('Written client permission for each of these three, and permission to name Scott Bechtle. Nothing above publishes without it.'),
-        testimonialFlag('One written testimonial from an owner or architect, tied to a specific project and a specific thing Gar did. Zero exist on file.'),
+        permissionFlag(
+          'Live cards held. The revised cards need a title, completion year, square footage and credits (architect, interior designer, lead foreman) for each project.',
+        ),
+      ],
+    },
+    {
+      type: 'prose',
+      heading: 'Built on thirty-five years of local presence',
+      body: [
+        'Gar Rector & Associates has built custom residences throughout Napa Valley since 1991. With a permanent field crew of 20 to 25 tradespeople, we maintain a deliberate scale that allows us to focus entirely on the quality and execution of our projects rather than increasing volume.',
+        'This controlled capacity ensures that Gar remains personally engaged on design details and architect communication throughout construction. You work directly with the builder whose name is on the company, backed by seasoned trade crews who understand custom architectural tolerances.',
       ],
     },
     {
@@ -127,48 +123,35 @@ export const customHomeBuilding: PageContent = {
       heading: 'Frequently asked questions',
       items: [
         {
-          q: 'Do you design the house, or build from an architect’s plans?',
+          q: 'Do you provide architectural design, or do you build from an architect’s plans?',
           a: [
-            'We build from your architect’s plans. Gar Rector & Associates is a builder, not a design firm, and the drawings stay the architect’s work. Our job is to solve what the site throws at those drawings without changing what they say.',
+            'We build strictly from drawings prepared by your retained architect. Our focus is executing the design with structural discipline, coordinating specialized trades, and managing site logistics alongside the design team.',
           ],
         },
         {
-          q: 'How involved is Gar once construction starts?',
+          q: 'Who manages my job site day to day?',
           a: [
-            'Gar is on the job site running the work through the whole build. He coordinates the trades, walks the drawings against what is actually getting built, and resolves site conditions as they come up.',
-          ],
-          flags: [
-            { kind: 'input', text: 'Item 2. One concrete week in his life, so this answer can say something a competitor cannot.' },
+            'A dedicated lead foreman is stationed on your site every working day to run trade operations and monitor framing tolerances. Gar Rector oversees major build milestones, visits active jobs on a regular rotation, and handles all structural and design coordination directly with you and your architect.',
           ],
         },
         {
-          q: 'What size and kind of homes do you build?',
+          q: 'How do you handle initial project budgeting?',
           a: [
-            'We build high-end custom homes across a wide range of sizes, from compact houses with real architectural interest to full estate properties. Recent builds run from twenty-seven hundred to four thousand square feet. Size matters less than whether the house is interesting to build.',
-          ],
-          flags: [
-            {
-              kind: 'decision',
-              text: 'When item 4 closes, replace this size question with a process question and move the size answer into the body.',
-            },
+            'Budgets are developed through line-item estimates derived from completed architectural and structural drawings. This establishes defined scopes and cost transparency before breaking ground.',
           ],
         },
         {
-          q: 'How does budgeting work?',
+          q: 'Why do you limit your active capacity to five or six builds?',
           a: [
-            'A budget gets built line by line from completed architectural and engineering drawings, before anything starts on site. That means the number becomes real once the drawings are far enough along to price accurately. We do not quote from a form or a square-foot figure.',
+            'Limiting our active work is a deliberate decision. It ensures that Gar personally stays involved in design decisions and that our field foremen and office staff have the focus needed to maintain exacting quality across every project.',
           ],
         },
-        {
-          q: 'Is the cabinetry really made in your shop?',
-          a: [
-            'Yes. Cabinetry, paneling and millwork are built in our shop in St. Helena by a three-person team. It means the finish work runs on our schedule and to the same standard as the framing around it.',
-          ],
-        },
-        { q: 'What happens if I get in touch?', a: [shared.firstStep] },
       ],
     },
     { type: 'image', image: placeholderPhoto('vaulted-timber-interior.jpg', 'Interior frame from Contemporary Farmhouse') },
   ],
-  cta: { heading: shared.ctaHeading, text: shared.ctaText },
+  cta: {
+    heading: 'Start a conversation',
+    text: 'If you are planning a custom build in Napa Valley or Sonoma County, we welcome the opportunity to review your architectural drawings and site conditions.',
+  },
 };

@@ -1,6 +1,8 @@
-import { business, permissionFlag, shared } from '../site';
+import { permissionFlag } from '../site';
 import type { PageContent } from '../types';
 
+// Copy: "Sonoma County location page: copy update (V2)", November 5, 2026.
+// Always "Sonoma County", never "Sonoma Valley".
 export const sonomaCounty: PageContent = {
   path: '/sonoma-county-custom-home-builder/',
   meta: {
@@ -9,25 +11,20 @@ export const sonomaCounty: PageContent = {
       'A St. Helena custom home builder working in Healdsburg, Santa Rosa and Glen Ellen for select projects, built from your architect’s drawings.',
   },
   eyebrow: 'Areas',
-  review: [
-    {
-      kind: 'hold',
-      text: 'The weakest page in the set and the easiest to rank. Recommendation: ship it short, as drafted, and treat the word-count band as a target for a later version. The one thing that changes this page is whatever the Bodega Bay permit was.',
-    },
-  ],
   hero: {
     h1: 'Custom home builder in Sonoma County',
     image: '/media/photos/hero-sonoma.jpg',
-    sub: 'A St. Helena builder working in Healdsburg, Santa Rosa and Glen Ellen, for a small number of projects at a time.',
+    sub: 'Custom home building and estate construction across Healdsburg, Santa Rosa, and Glen Ellen.',
+    trust: 'Executing complex residential architecture and estate rebuilds since 1991.',
     ctas: ['conversation'],
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'We take Sonoma County work selectively',
+      heading: 'Architectural residences across Sonoma County',
       body: [
-        'The office and the cabinet shop are in St. Helena, and most of our work is in Napa Valley. We build in Sonoma County for select projects, which is a real limit rather than a polite one. Five or six builds run at a time and Gar is on each site, so distance is a scheduling fact rather than a preference.',
-        'In practice that means the work we take here is work worth the drive, and we will say so early if a project is better served by somebody closer.',
+        'While our headquarters and custom millwork shop are rooted in St. Helena, Gar Rector & Associates selectively accepts architecturally distinctive custom home and estate projects across Sonoma County. We focus on properties in Healdsburg, Santa Rosa, and Glen Ellen where clients demand direct builder engagement and uncompromising drawing execution.',
+        'Sonoma County terrain presents unique structural considerations: expansive hillside slopes along the Mayacamas ridge, rural estate parcels with specialized septic and well infrastructure, and rigorous wildfire rebuilding codes overseen by Permit Sonoma. We manage these site logistics directly with client-retained architects to deliver residences built to the highest standard of durability.',
       ],
     },
     {
@@ -35,69 +32,53 @@ export const sonomaCounty: PageContent = {
       image: { src: '/media/photos/sonoma-vineyard.jpg', label: 'A Sonoma County vineyard', alt: 'A Sonoma County vineyard' },
     },
     {
-      type: 'places',
-      heading: 'Where we build here',
-      items: [
-        { title: 'Healdsburg', flags: [{ kind: 'input', text: 'No project on record.' }] },
-        { title: 'Santa Rosa', flags: [{ kind: 'input', text: 'No project on record.' }] },
-        { title: 'Glen Ellen', flags: [{ kind: 'input', text: 'No project on record.' }] },
-      ],
-      after: [
-        'There is permitted work on public record as far west as Bodega Bay, among the 25 permits in the firm’s name.',
-      ],
-      flags: [
-        permissionFlag(
-          'The Bodega Bay permit is the only Sonoma County evidence in the entire reference, and nothing is known about the project behind it. Finding out what it was would change this page more than any writing could.',
-        ),
-      ],
-    },
-    {
-      type: 'offerings',
-      heading: 'What we build',
-      items: [
-        {
-          title: 'Custom home building',
-          text: 'New homes built from your architect’s drawings, foundation through finish.',
-          href: '/services/custom-home-building/',
-        },
-        {
-          title: 'Winery and estate builds',
-          text: 'Properties where the house is one building among several.',
-          href: '/services/winery-estate-builds/',
-        },
-        {
-          title: 'Remodeling',
-          text: 'Houses rebuilt to the studs, and tear-down and rebuild.',
-          href: '/services/luxury-home-remodeling/',
-        },
-        {
-          title: 'Cabinetry and millwork',
-          text: 'Made in our own shop in St. Helena, which travels.',
-          href: '/services/custom-cabinetry/',
-        },
-      ],
-    },
-    {
       type: 'prose',
-      heading: 'How we work',
-      body: [
-        shared.architect,
-        'A budget is built line by line from completed architectural and engineering drawings, before anything starts on site. There is no estimate form and no automated quote.',
-        'Gar is on the job site running the work, and the cabinetry and millwork for the house are made in our own shop rather than ordered in.',
+      heading: 'Navigating Sonoma County site conditions',
+      subsections: [
+        {
+          heading: 'Healdsburg & Russian River corridor',
+          body: [
+            'From contemporary vineyard estates in Healdsburg to modern retreats along the Russian River, we execute complex steel framing, board-formed concrete, and expansive architectural glass packages designed to integrate seamlessly into wine country settings.',
+          ],
+        },
+        {
+          heading: 'Glen Ellen & rural estate parcels',
+          body: [
+            'Building in Glen Ellen and rural Sonoma communities requires comprehensive site management: coordinating long private access roads, staging materials on constrained parcels, and balancing multi-structure estate footprints with agricultural and open-space easements.',
+          ],
+        },
+        {
+          heading: 'Permit Sonoma & WUI wildfire standards',
+          body: [
+            'Sonoma County maintains strict building regulations under Permit Sonoma, particularly across designated high-fire severity zones. We build with non-combustible exterior envelopes, ember-resistant assemblies, and heavy timber elements that comply fully with Chapter 7A codes while protecting architectural lines.',
+          ],
+        },
       ],
     },
     {
       type: 'glance',
+      heading: 'Sonoma County operations',
       rows: [
-        { label: 'Towns served', value: 'Healdsburg, Santa Rosa, Glen Ellen, for select projects' },
-        { label: 'Based in', value: `${business.street}, ${business.locality}, ${business.region} ${business.postalCode}` },
-        { label: 'On record in Sonoma County', value: 'Permitted work as far west as Bodega Bay' },
-        { label: 'Active capacity', value: 'Five or six builds at a time, across both counties' },
+        { label: 'Communities served', value: 'Healdsburg, Santa Rosa, Glen Ellen, and select rural Sonoma County sites.' },
+        { label: 'Project criteria', value: 'Selective architecturally distinctive ground-up custom residences and estate rebuilds.' },
         {
-          label: 'How the number gets built',
-          value: 'A line-item budget developed from completed drawings, before work starts on site',
+          label: 'Active capacity',
+          value: 'Five to six active builds at a time across our portfolio, ensuring direct principal oversight.',
         },
-        { label: 'License', value: 'California CSLB 664538, General Building (B)' },
+        { label: 'Building agency', value: 'Permit Sonoma (Sonoma County PRMD) and local municipal building departments.' },
+        { label: 'Direct access', value: 'Discuss your drawings and site conditions directly with Gar Rector.' },
+      ],
+    },
+    {
+      // No Sonoma County project is cleared yet, so the section stays empty until one is.
+      type: 'projects',
+      id: 'recent-work',
+      heading: 'Featured Sonoma County work',
+      items: [],
+      flags: [
+        permissionFlag(
+          'Three Sonoma County projects (Healdsburg, Glen Ellen, Santa Rosa) with titles, credits and written permission. The section stays hidden until one is added.',
+        ),
       ],
     },
     {
@@ -105,24 +86,34 @@ export const sonomaCounty: PageContent = {
       heading: 'Frequently asked questions',
       items: [
         {
-          q: 'Are you taking Sonoma County projects right now?',
+          q: 'What types of projects do you accept in Sonoma County?',
           a: [
-            'That depends on what is already running. Five or six builds go at a time across both counties, so the honest answer comes from a conversation rather than a page.',
+            'We selectively accept architect-designed ground-up custom homes, complex hillside residences, and structural estate rebuilds in Healdsburg, Santa Rosa, and Glen Ellen that match our boutique project criteria.',
           ],
         },
         {
-          q: 'Why would I use a Napa Valley builder here?',
+          q: 'How do you manage site logistics and oversight outside of Napa Valley?',
           a: [
-            'For the same reasons anyone does: the owner runs the job on site, the cabinetry is made in house, and the build follows the drawings. If proximity matters more to you than those things, a local builder is the better call and we will tell you that.',
+            'Every project is assigned a dedicated lead foreman stationed on your site every single working day, while Gar Rector manages design coordination and visits active Sonoma County sites on a structured rotation.',
           ],
         },
         {
-          q: 'Do you work with Sonoma County architects?',
-          a: ['Yes. We build from drawings by the architect you retain, wherever they are based.'],
+          q: 'Do you work with Permit Sonoma and local fire districts?',
+          a: [
+            'Yes. We work directly with Permit Sonoma and local fire protection districts to navigate building permits, environmental health requirements, and California WUI Chapter 7A wildfire codes.',
+          ],
         },
-        { q: 'What happens if I get in touch?', a: [shared.firstStep] },
+        {
+          q: 'Can our Sonoma County build incorporate your in-house custom millwork?',
+          a: [
+            'Yes. All custom cabinetry, architectural paneling, and interior casework are manufactured inside our St. Helena shop and transported and installed on-site by our permanent field carpenters.',
+          ],
+        },
       ],
     },
   ],
-  cta: { heading: shared.ctaHeading, text: shared.ctaText },
+  cta: {
+    heading: 'Start a conversation',
+    text: 'If you are planning an architecturally significant custom build or estate rebuild in Sonoma County, we welcome the opportunity to review your drawings and site conditions.',
+  },
 };

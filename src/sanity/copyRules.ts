@@ -1,14 +1,13 @@
 // The copy document's house style, checked as editors type. Shown as a warning on the field, the
-// same rules scripts/check-copy.mjs enforces on the built site.
+// same rules scripts/check-copy.mjs enforces on the built site. The November 2026 copy confirms the
+// 1991 founding year and uses semicolons, so neither is flagged any more.
 import type { StringRule, TextRule } from 'sanity';
 
 const rules: [RegExp, string][] = [
   [/—/, 'an em dash (use a full stop or a comma)'],
-  [/;/, 'a semicolon'],
   [/!/, 'an exclamation point'],
-  [/\bluxury\b/i, 'the word "luxury" (allowed only in page addresses and search listings)'],
+  [/\bluxury\b(?! home remodeling)/i, 'the word "luxury" (allowed only in the service name, Luxury Home Remodeling)'],
   [/\$\s?\d/, 'a price (no pricing appears anywhere)'],
-  [/\b(since|founded in|established in)\s+(19|20)\d{2}\b/i, 'a founding year (not confirmed yet)'],
 ];
 
 export function checkCopy(value: unknown): true | string {

@@ -44,6 +44,11 @@ export function HomeHero({ hero, labels, video }: { hero: Hero; labels: Labels; 
           <p className="mt-7 max-w-2xl text-base font-light leading-relaxed text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.45)] md:text-lg">
             {hero.sub}
           </p>
+          {hero.trust && (
+            <p className="mt-5 font-heading text-lg italic leading-snug text-white/75 [text-shadow:0_1px_12px_rgba(0,0,0,0.45)] md:text-xl">
+              {hero.trust}
+            </p>
+          )}
           <div className="flex justify-center">
             <HeroCtas hero={hero} labels={labels} onDark />
           </div>

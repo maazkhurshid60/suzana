@@ -1,6 +1,8 @@
-import { business, permissionFlag, projects, shared } from '../site';
+import { permissionFlag, projects } from '../site';
 import type { PageContent } from '../types';
 
+// Copy: "St. Helena location page: copy update (V2)", November 5, 2026.
+// St. Helena municipal constraints only. Generic build mechanics belong on the service pages.
 export const stHelena: PageContent = {
   path: '/st-helena-custom-home-builder/',
   meta: {
@@ -18,22 +20,58 @@ export const stHelena: PageContent = {
   hero: {
     h1: 'Custom home builder in St. Helena',
     image: '/media/photos/hero-st-helena.jpg',
-    sub: 'The office and the cabinet shop are on Charter Oak Avenue. Most of what we have built recently is within a few minutes of them.',
-    ctas: ['conversation', 'work'],
-    workHref: '#recent-work',
+    sub: 'Executing architecturally significant custom homes and estate rebuilds from our headquarters on Charter Oak Avenue.',
+    trust: 'Based in St. Helena since 1991.',
+    ctas: ['conversation'],
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'We are based here',
+      heading: 'Building within St. Helena’s municipal and historic fabric',
       body: [
-        'Gar Rector & Associates works out of Charter Oak Avenue in St. Helena, and the cabinet shop is here too. That is not a sales point so much as the reason the arrangement works. Gar is on the job site running the work across five or six builds at a time, and in a town this size that means the drive between two of them is a few minutes.',
+        'Constructing a custom home within St. Helena requires specialized familiarity with the city’s unique municipal standards. Projects in town balance exacting modern architecture with historic preservation guidelines, strict lot coverage limits, protected native oak ordinances, and tight neighborhood setbacks.',
+        'Gar Rector & Associates has operated in St. Helena for thirty-five years. Our permanent offices and custom millwork shop sit at 1401 Charter Oak Ave, placing our leadership and shop craftsmen minutes from every active job site in town. We coordinate directly with the City of St. Helena Planning and Building Department to resolve physical site and utility constraints cleanly.',
+      ],
+    },
+    {
+      type: 'prose',
+      heading: 'St. Helena site realities and municipal coordination',
+      subsections: [
+        {
+          heading: 'Tight in-town setbacks & lot boundaries',
+          body: [
+            'Residential parcels in St. Helena often leave narrow margins between property boundaries and neighboring historic homes. We stage materials, sequence heavy equipment, and protect mature trees to execute complex framing and concrete pours without disrupting adjacent properties.',
+          ],
+        },
+        {
+          heading: 'Historic district review & design compliance',
+          body: [
+            'When building or rebuilding within St. Helena’s established residential corridors, exterior elevations must meet strict city design standards. We collaborate with client-retained architects to execute approved architectural drawings, ensuring exterior cladding, roof profiles, and window systems satisfy municipal requirements.',
+          ],
+        },
+        {
+          heading: 'Minutes from active sites',
+          body: [
+            'Because our headquarters and millwork facility are in St. Helena, Gar Rector and our project foremen maintain constant presence across town builds. We review site dimensions, coordinate municipal utility tie-ins, and inspect framing details in person every working day.',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'glance',
+      heading: 'St. Helena operations',
+      rows: [
+        { label: 'Office & shop address', value: '1401 Charter Oak Ave, St. Helena, CA 94574.' },
+        { label: 'Active capacity', value: 'Five to six active builds at a time across the valley, ensuring direct principal oversight.' },
+        { label: 'Core services in town', value: 'Ground-Up Custom Homes, Full Structural Rebuilds, and In-House Custom Millwork.' },
+        { label: 'Municipal jurisdiction', value: 'City of St. Helena Planning & Building Department and Napa County PBES.' },
+        { label: 'Direct access', value: 'Discuss your drawings and site conditions directly with Gar Rector.' },
       ],
     },
     {
       type: 'projects',
       id: 'recent-work',
-      heading: 'What we have built in St. Helena',
+      heading: 'Featured St. Helena work',
       items: [
         {
           project: projects['quail-camp'],
@@ -52,49 +90,7 @@ export const stHelena: PageContent = {
         },
       ],
       flags: [
-        permissionFlag('Written permission for all three. This page names more projects than any other and is correspondingly the most blocked.'),
-        {
-          kind: 'decision',
-          text: 'Whether street names publish at all. House numbers do not, per the image rule. Street names alone still narrow a house down in a town this size, and “Sylvaner Residence” already appears on the current placeholder homepage. The copy can drop to “in town” and “a few streets apart” with no loss.',
-        },
-      ],
-    },
-    {
-      type: 'prose',
-      heading: 'Building inside the city',
-      body: [
-        'Work inside St. Helena runs on a different set of constraints from work on open land. Lots are tight, neighbours are close, and the review and utility paths take the time they take. The Contemporary Farmhouse went through City of St. Helena review and PG&E coordination, and that sequencing is a real part of the schedule rather than a formality at the start of it.',
-      ],
-      flags: [
-        {
-          kind: 'input',
-          text: 'Item 4. This section is thin and it is the most useful section on the page. What the firm has learned about the St. Helena permit path, in Gar’s or Michael’s words, would be worth more here than anything else that could be added.',
-        },
-      ],
-    },
-    {
-      type: 'offerings',
-      heading: 'What we build',
-      items: [
-        { title: 'Custom home building', href: '/services/custom-home-building/' },
-        { title: 'Winery and estate builds', href: '/services/winery-estate-builds/' },
-        { title: 'Remodeling', href: '/services/luxury-home-remodeling/' },
-        { title: 'Cabinetry and millwork', text: 'Made here in St. Helena.', href: '/services/custom-cabinetry/' },
-      ],
-    },
-    {
-      type: 'glance',
-      rows: [
-        { label: 'Address', value: `${business.street}, ${business.locality}, ${business.region} ${business.postalCode}` },
-        { label: 'Phone', value: business.phone },
-        { label: 'Hours', value: `${business.hours}. ${business.weekends}` },
-        { label: 'The shop', value: 'Cabinetry and millwork, three people, in St. Helena' },
-        { label: 'Recent builds here', value: 'Quail Camp Estate, Contemporary Farmhouse, Bondi Beach House' },
-        {
-          label: 'Also serving',
-          value: 'Napa, Yountville, Calistoga, Oakville, Rutherford, and Sonoma County for select projects',
-        },
-        { label: 'License', value: 'California CSLB 664538, General Building (B)' },
+        permissionFlag('Live cards held. The revised cards need a title and credits (architect, interior designer, lead foreman) for each project.'),
       ],
     },
     {
@@ -102,30 +98,35 @@ export const stHelena: PageContent = {
       heading: 'Frequently asked questions',
       items: [
         {
-          q: 'Can I come and see the cabinet shop?',
-          flags: [
-            {
-              kind: 'input',
-              text: 'Items 3 and 10. This is the obvious question for a local page and nobody has ruled on it. A yes is a genuinely strong answer for a buyer deciding between builders.',
-            },
+          q: 'How do you handle City of St. Helena building permit approvals?',
+          a: [
+            'We review drawing sets against St. Helena municipal codes, tree protection rules, and zoning setbacks during pre-construction, working directly with your architect and city building officials to clear permit reviews cleanly.',
           ],
         },
         {
-          q: 'Do you build outside St. Helena?',
+          q: 'Where is your office and millwork shop located?',
           a: [
-            {
-              text: 'Yes, across Napa Valley and into Sonoma County for select projects.',
-              links: [
-                { label: 'Napa Valley', href: '/napa-valley-custom-home-builder/' },
-                { label: 'Sonoma County', href: '/sonoma-county-custom-home-builder/' },
-              ],
-            },
+            'Our headquarters and custom cabinetry shop are located at 1401 Charter Oak Ave in St. Helena, minutes from local residential building sites.',
           ],
         },
-        { q: 'How much of your work is referral?', a: ['About ninety percent of it.'] },
-        { q: 'What happens if I get in touch?', a: [shared.firstStep] },
+        {
+          q: 'Do you build on both in-town lots and hillside parcels around St. Helena?',
+          a: [
+            // The copy has an em dash here, which the house style rules out. A comma reads the same.
+            'Yes. We build throughout the city limits, from tight downtown residential lots along the valley floor to complex hillside estate parcels in the surrounding foothills.',
+          ],
+        },
+        {
+          q: 'Who oversees my St. Helena build site day to day?',
+          a: [
+            'A dedicated lead foreman is stationed on your site every working day, while Gar Rector manages design milestones and visits active St. Helena projects on a daily rotation.',
+          ],
+        },
       ],
     },
   ],
-  cta: { heading: shared.ctaHeading, text: shared.ctaText },
+  cta: {
+    heading: 'Start a conversation',
+    text: 'If you are planning a custom build or structural rebuild in St. Helena, we welcome the opportunity to review your architectural drawings and site logistics.',
+  },
 };

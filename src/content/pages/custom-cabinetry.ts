@@ -1,8 +1,8 @@
-import { placeholderPhoto, shared } from '../site';
+import { placeholderPhoto } from '../site';
 import type { PageContent } from '../types';
 
-// Thirty years belongs to the cabinetmaker, not the shop. The shop is recent. Keep them apart
-// through every edit. No cabinetmaker name and no shop DBA appear without written permission.
+// Copy: "Custom millwork and cabinetry page: copy update", November 5, 2026.
+// No cabinetmaker name and no shop DBA appear without written permission.
 export const customCabinetry: PageContent = {
   path: '/services/custom-cabinetry/',
   meta: {
@@ -12,83 +12,72 @@ export const customCabinetry: PageContent = {
   },
   eyebrow: 'Services',
   hero: {
-    h1: 'Cabinetry and millwork, made in St. Helena',
+    h1: 'In-house custom millwork and architectural cabinetry',
     image: '/media/photos/hero-cabinet-shop.jpg',
-    sub: 'A three-person shop, a cabinetmaker with thirty years at the bench, and the finish work running on our own calendar.',
+    sub: 'Architectural cabinetry, paneling, and custom joinery built inside our St. Helena workshop for Gar Rector & Associates projects.',
+    trust: 'Crafted in St. Helena since 1991. Over thirty years of millwork experience on the shop team.',
     ctas: ['conversation'],
-    flags: [
-      {
-        kind: 'input',
-        text: 'Item 10. Does the shop take standalone work, from owners or other builders? That answer decides whether this page carries its own CTA and what it says. The copy assumes it does not, which is the safer default.',
-      },
-    ],
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'Why a builder owns a cabinet shop',
+      heading: 'Cabinetry and millwork built under our own roof',
       body: [
-        'On a high-end house the millwork is the last thing in and the first thing anyone notices. It is also, routinely, the thing that holds up the end of a build. A shop with its own queue and its own priorities decides when your kitchen gets made.',
-        'Gar bought the tools and built the shop out so that would stop being somebody else’s decision. The finish work on our houses is made by us, to our schedule, and if a date moves it moves for a reason we can see.',
+        'In high-end architectural construction, cabinetry is not furniture delivered at the end of the job; it is a structural component of the interior architecture. Flush reveal profiles, continuous veneer sequences, integrated ceiling paneling, and hidden pivot doors leave no tolerance for third-party manufacturing errors.',
+        'Gar Rector & Associates operates its own dedicated custom millwork shop in St. Helena. With more than thirty years of hands-on joinery experience on our team, we build custom cabinetry, architectural paneling, and specialty casework directly for our residences. Manufacturing in-house allows us to take raw field dimensions directly to the shop benches, eliminating third-party lead times and guaranteeing exact alignment with the framing.',
       ],
     },
     {
       type: 'prose',
-      heading: 'The shop',
+      heading: 'How we craft',
+      body: [
+        'Every piece of architectural cabinetry begins with shop drawings coordinated directly between the architect and our lead cabinetmaker.',
+      ],
       subsections: [
         {
-          heading: 'Three people and a long bench',
+          heading: 'Architectural joinery and veneer matching',
           body: [
-            'The shop runs with three people, led by a cabinetmaker Gar met and brought in, who has roughly thirty years of his own at the bench. It is a small operation and it is growing.',
-          ],
-          flags: [
-            {
-              kind: 'input',
-              text: 'Item 10 and guardrail 10. The cabinetmaker’s name cannot be published without his written permission. The copy describes him without naming him.',
-            },
+            'We source hand-selected hardwoods, architectural veneers, and solid timber species to match specified interior palettes. From book-matched walnut kitchen elevations to rift-sawn white oak wall paneling, our craftsmen hand-fit every joint, face frame, and concealed hardware assembly.',
           ],
         },
         {
-          heading: 'What gets made here',
+          heading: 'Direct field coordination',
           body: [
-            'Kitchens, paneling, built-ins, vanities, interior doors and trim. Anything the drawings call for in wood, made for one house at a time rather than batched against other jobs.',
-          ],
-          flags: [
-            {
-              kind: 'input',
-              text: 'Item 3. The full capability list. The list above is inferred from what the shop does on these builds and needs confirming before it publishes.',
-            },
+            'Because our cabinet shop is located twenty minutes from our job sites, our millworkers walk active framing alongside Gar and our lead foremen. Field dimensions are verified against physical drywall and concrete benchmarks before fabrication begins, preventing on-site shimming or visual compromises.',
           ],
         },
         {
-          heading: 'Built to your architect’s drawings',
+          heading: 'Seamless trade integration',
           body: [
-            'Millwork details come from the design team the same way the rest of the house does. Where a detail is difficult to build, the shop works it out with them rather than simplifying it quietly.',
-          ],
-        },
-        {
-          heading: 'One company, one calendar',
-          body: [
-            'Because the shop is ours, the cabinetry schedule and the build schedule are the same schedule. There is no handoff between a builder and a supplier, and no gap where one blames the other.',
+            'Integrated cabinetry often interfaces with concealed HVAC supply lines, architectural lighting channels, and structural steel embeds. By controlling both the house framing and the cabinet fabrication, we ensure mechanical trades and millwork installations fit cleanly together.',
           ],
         },
       ],
     },
     {
       type: 'glance',
+      heading: 'Shop operations',
       rows: [
-        { label: 'What it is', value: 'Our own cabinetry and millwork shop in St. Helena' },
-        { label: 'The team', value: 'Three people, led by a cabinetmaker with roughly thirty years of experience' },
-        { label: 'What gets made', flags: [{ kind: 'input', text: 'Item 3. Confirm the capability list.' }] },
-        { label: 'Who it is for', value: 'Owners and architects building or remodeling with Gar Rector & Associates' },
-        { label: 'Standalone work', flags: [{ kind: 'input', text: 'Item 10. Not answered.' }] },
-        { label: 'How the number gets built', value: 'Millwork is a line in the project budget, developed from completed drawings' },
+        { label: 'Shop location', value: '1401 Charter Oak Ave, St. Helena, CA 94574.' },
+        { label: 'Shop capacity', value: 'Dedicated exclusively to active Gar Rector & Associates residential builds and estate projects.' },
+        { label: 'Experience', value: 'Over thirty years of dedicated architectural joinery and custom cabinetry experience on the shop team.' },
+        {
+          label: 'Scope of work',
+          value:
+            'Custom kitchen cabinetry, primary bath vanities, architectural wall paneling, library casework, wine cellars, and hidden pivot doors.',
+        },
+        {
+          label: 'Materials handled',
+          value: 'Domestic hardwoods, European white oak, walnut, rift-cut veneers, architectural metals, and custom hand finishes.',
+        },
+        { label: 'Installation', value: 'Installed exclusively by our permanent in-house field carpenters and lead foremen.' },
+        { label: 'Coordination', value: 'Direct review of architectural elevations and custom shop drawings with retained design teams.' },
       ],
     },
     {
       type: 'projects',
       id: 'recent-work',
-      heading: 'Recent work',
+      heading: 'Selected millwork installations',
       image: placeholderPhoto(
         'great-room-builtins.jpg',
         'Interiors. This page needs them more than any other, top of the shot list for the planned shoot.',
@@ -97,8 +86,16 @@ export const customCabinetry: PageContent = {
       flags: [
         {
           kind: 'input',
-          text: 'The shop has no project block of its own. One image exists in the current asset set, a vaulted ceiling with custom millwork from 344 Troon Ct, a project with no other information attached. Either that project gets filled in, or this page borrows an interior from Quail Camp or Contemporary Farmhouse with permission.',
+          text: 'Three millwork projects with road or landmark names, completion years and architect credits, and confirmation on whether the lead cabinetmaker can be named.',
         },
+      ],
+    },
+    {
+      type: 'prose',
+      heading: 'Physical proof of craft in St. Helena',
+      body: [
+        'Operating an in-house cabinet shop is rare among custom home builders in Napa Valley. Most contractors subcontract millwork to distant production shops, leading to prolonged lead times, shipping damage, and awkward field trims when dimensions conflict.',
+        'Gar Rector & Associates maintains its shop in St. Helena so that design decisions, timber selection, and bench fabrication happen in close proximity to our building sites. It is our physical guarantee of craftsmanship and accountability.',
       ],
     },
     {
@@ -106,49 +103,34 @@ export const customCabinetry: PageContent = {
       heading: 'Frequently asked questions',
       items: [
         {
-          q: 'Can I buy cabinetry from you without building with you?',
-          flags: [
-            {
-              kind: 'input',
-              text: 'Item 10. Until this is answered the question stays unanswered. If the answer is no, the honest version is one line: the shop exists to serve our own builds, and we are glad to recommend others.',
-            },
-          ],
-        },
-        {
-          q: 'Who designs the cabinetry?',
+          q: 'Is the cabinetry really made in your own shop?',
           a: [
-            'Your architect or designer does, and we build to their drawings. Where a detail needs working out for the shop to make it, that happens with them.',
+            'Yes. All custom architectural cabinetry, wall paneling, casework, and specialty interior doors for our builds are fabricated inside our workshop at 1401 Charter Oak Ave in St. Helena.',
           ],
         },
         {
-          q: 'How long has the shop been running?',
-          flags: [
-            {
-              kind: 'input',
-              text: 'Item 3. The shop is recent. The thirty years belongs to the cabinetmaker, not to the shop, and any sentence that lets a reader think otherwise is false. This needs the actual founding of the shop.',
-            },
-          ],
-        },
-        {
-          q: 'What does it mean in practice that the shop is yours?',
+          q: 'Do you build cabinetry for projects that Gar Rector & Associates is not general contracting?',
           a: [
-            'The cabinetry queue is set by our build schedule rather than by somebody else’s order book. When a date on site moves, the shop knows the same day.',
+            'Our shop capacity is reserved primarily for our own custom residential, remodeling, and estate builds to ensure dedicated scheduling and uncompromising quality control for our clients.',
           ],
         },
         {
-          q: 'Can you match existing millwork in an older house?',
+          q: 'How do you work with an interior designer’s or architect’s millwork specifications?',
           a: [
-            'Yes. Matching a profile or a finish that is already in the house is ordinary work for a shop that makes one house at a time.',
+            'We take the architect’s or designer’s design elevations and generate detailed shop drawings, material samples, and finish mockups for approval before milling raw lumber.',
           ],
         },
         {
-          q: 'Is the cabinetry included in the build budget?',
+          q: 'Who installs the custom cabinetry on site?',
           a: [
-            'It is a line in the project budget, built from the completed drawings along with everything else. There is no separate quote and no square-foot figure.',
+            'Installation is handled by our permanent finish carpenters and lead foremen, ensuring that every seam, reveal, and hardware component aligns perfectly with the completed structure.',
           ],
         },
       ],
     },
   ],
-  cta: { heading: shared.ctaHeading, text: shared.ctaText },
+  cta: {
+    heading: 'Start a conversation',
+    text: 'If you are planning a custom home build or estate modernization that requires custom millwork and joinery, we welcome the opportunity to review your architectural drawings.',
+  },
 };

@@ -105,6 +105,7 @@ export const testimonialFlag = (what: string): Flag => ({ kind: 'input', text: `
 export const chrome: SiteChrome = {
   menu: [
     { label: 'Services', links: services },
+    { label: 'How we work', href: '/how-we-work/' },
     { label: 'Areas', links: areas },
     { label: 'Contact', href: '/contact/' },
   ],

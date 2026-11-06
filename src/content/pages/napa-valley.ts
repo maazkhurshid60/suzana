@@ -1,6 +1,8 @@
-import { business, permissionFlag, shared } from '../site';
+import { permissionFlag, projects } from '../site';
 import type { PageContent } from '../types';
 
+// Copy: "Napa Valley location page: copy update (V2)", November 5, 2026.
+// Regional building constraints only. Service build mechanics and the shop belong on the service pages.
 export const napaValley: PageContent = {
   path: '/napa-valley-custom-home-builder/',
   meta: {
@@ -12,130 +14,95 @@ export const napaValley: PageContent = {
   hero: {
     h1: 'Custom home builder in Napa Valley',
     image: '/media/photos/hero-napa-valley.jpg',
-    sub: 'Gar Rector & Associates builds in St. Helena, Napa, Yountville, Calistoga, Oakville and Rutherford, with 25 permitted projects on public record.',
-    ctas: ['conversation', 'work'],
-    workHref: '#recent-work',
+    sub: 'Executing complex residential architecture across St. Helena, Yountville, Oakville, Rutherford, Calistoga, and Napa.',
+    trust: 'Building throughout Napa Valley since 1991.',
+    ctas: ['conversation'],
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'Where we work in the valley',
+      heading: 'Local building realities across Napa Valley',
       body: [
-        {
-          text: 'The shop and the office are on Charter Oak Avenue in St. Helena, and most of our work sits within a short drive of it. St. Helena, Napa, Yountville, Calistoga, Oakville and Rutherford. Sonoma County for select projects.',
-          links: [{ label: 'Sonoma County', href: '/sonoma-county-custom-home-builder/' }],
-        },
-        'Being close matters more than it sounds. Gar is on the job site running the work, across five or six builds at a time, and that is a different proposition when the sites are twenty minutes apart than when they are not.',
+        'Building a custom residence in Napa Valley requires navigating rigorous geographical, environmental, and municipal constraints. Success on these sites demands practical familiarity with local soils, drainage basins, microclimates, and regional building departments.',
+        'Gar Rector & Associates brings thirty-five years of hands-on local experience to valley building sites. We understand how Napa County Agricultural Preserve regulations restrict residential footprints, how steep hillside parcels require deep pier foundations, and how Chapter 7A fire codes dictate exterior envelope assemblies. We resolve these local conditions directly on site alongside your design team.',
       ],
     },
     {
       type: 'image',
-      image: { src: '/media/photos/napa-valley-floor.jpg', label: 'Vineyard rows on the Napa Valley floor, with the hills behind', alt: 'Vineyard rows on the Napa Valley floor, with the hills behind' },
+      image: {
+        src: '/media/photos/napa-valley-floor.jpg',
+        label: 'Vineyard rows on the Napa Valley floor, with the hills behind',
+        alt: 'Vineyard rows on the Napa Valley floor, with the hills behind',
+      },
     },
     {
       type: 'prose',
-      id: 'recent-work',
-      heading: 'What building here actually involves',
+      heading: 'Serving communities throughout Napa Valley',
+      body: ['From our headquarters in St. Helena, we manage active custom builds across every major jurisdiction in the valley.'],
       subsections: [
         {
-          heading: 'The site usually decides the first year',
+          heading: 'Valley floor towns & estate parcels',
           body: [
-            {
-              draft: true,
-              text: 'The builds we take on tend to sit on ground that needs work before it will take a house. At Quail Camp Estate in St. Helena, a blank site on raw land, all the infrastructure went in and enough earth moved to make it buildable before the foundation. On Mt. Veeder Road in Napa, the build site is at the bottom of a narrow sloping driveway on a hillside, and the earthwork came first there too.',
-            },
+            'We build across St. Helena, Napa, Yountville, Oakville, Rutherford, and Calistoga. Whether managing tight municipal setbacks and historic preservation guidelines in town or coordinating expansive residential estates bounded by active vineyards, we orchestrate site logistics, utility connections, and material staging to maintain smooth construction progress.',
           ],
         },
         {
-          heading: 'In town is its own problem',
+          heading: 'Hillside foundations & agricultural terrain',
           body: [
-            {
-              draft: true,
-              text: 'Inside city limits the constraints change. The Contemporary Farmhouse on Sylvaner Avenue in St. Helena was a tear-down two minutes from town, built through City of St. Helena review and PG&E coordination, on a lot with neighbours on every side. The house that came out of it feels secluded, which was the point.',
-            },
+            'Building along the Mayacamas or Vaca mountain ranges requires specialized structural engineering. We execute complex drilled-pier foundations, grade beams, and extensive concrete retaining walls to secure residences to steep topography. On agricultural parcels, we coordinate build envelopes to strictly honor farm easements, root-zone protections, and groundwater management guidelines.',
           ],
         },
         {
-          heading: 'Most of what is left is rebuilding',
+          heading: 'Napa County WUI Chapter 7A fire compliance',
           body: [
-            {
-              draft: true,
-              text: 'A good deal of the work in the valley now starts with a house that already exists on a lot worth having. Bondi Beach House on Sylvaner was a 1970s tract home that became a contemporary Australian beach house.',
-              links: [{ label: 'Luxury Home Remodeling', href: '/services/luxury-home-remodeling/' }],
-            },
+            'Napa County enforces rigorous Wildland-Urban Interface (WUI) standards. We build with non-combustible cladding, fire-rated roof assemblies, specialized ember-resistant venting, structural steel, and dual-pane tempered glass. Our continuous working relationship with Napa County Planning, Building & Environmental Services keeps local inspections running smoothly.',
           ],
-        },
-      ],
-      flags: [
-        permissionFlag('Written permission for all four projects named on this page.'),
-        {
-          kind: 'decision',
-          text: 'Whether street names publish at all (Mt. Veeder Road, Sylvaner Avenue). See the same decision on the St. Helena page.',
-        },
-      ],
-    },
-    {
-      type: 'offerings',
-      heading: 'What we build',
-      items: [
-        {
-          title: 'Custom home building',
-          text: 'New homes built from your architect’s drawings, foundation through finish.',
-          href: '/services/custom-home-building/',
-        },
-        {
-          title: 'Winery and estate builds',
-          text: 'Properties where the house is one building among several.',
-          href: '/services/winery-estate-builds/',
-        },
-        {
-          title: 'Remodeling',
-          text: 'Houses rebuilt to the studs, and tear-down and rebuild where the existing house is not worth keeping.',
-          href: '/services/luxury-home-remodeling/',
-        },
-        {
-          title: 'Cabinetry and millwork',
-          text: 'Made in our own shop in St. Helena.',
-          href: '/services/custom-cabinetry/',
-        },
-      ],
-    },
-    {
-      type: 'places',
-      heading: 'Towns',
-      items: [
-        {
-          title: 'St. Helena',
-          text: 'Where the office and the cabinet shop are, and where most of our recent work has been.',
-          link: { label: 'St. Helena', href: '/st-helena-custom-home-builder/' },
-        },
-        { title: 'Napa', text: 'Hillside builds on the western slopes, including Mt. Veeder.' },
-        {
-          title: 'Yountville, Oakville and Rutherford',
-          text: 'Smaller towns along the valley floor, mostly estate properties and rebuilds on existing lots.',
-        },
-        { title: 'Calistoga', text: 'The north end of the valley.' },
-      ],
-      flags: [
-        {
-          kind: 'input',
-          text: 'Yountville, Calistoga, Oakville and Rutherford have no project on record between them. Each entry says only what can be said. One named build in any of these towns would do more for this page than another paragraph.',
         },
       ],
     },
     {
       type: 'glance',
+      heading: 'Regional operations',
       rows: [
-        { label: 'Based in', value: `${business.street}, ${business.locality}, ${business.region} ${business.postalCode}` },
-        { label: 'Towns served', value: 'St. Helena, Napa, Yountville, Calistoga, Oakville, Rutherford' },
-        { label: 'Also serving', value: 'Healdsburg, Santa Rosa and Glen Ellen in Sonoma County, for select projects' },
-        { label: 'On record', value: '25 permitted projects' },
         {
-          label: 'Active capacity',
-          value: 'Five or six builds at a time. 20 to 25 staff plus subcontractors, three in the cabinet shop',
+          label: 'Primary towns served',
+          value: 'St. Helena, Napa, Yountville, Calistoga, Oakville, and Rutherford. Select projects in Sonoma County.',
         },
-        { label: 'License', value: 'California CSLB 664538, General Building (B)' },
-        { label: 'Hours', value: `${business.hours}. ${business.weekends}` },
+        { label: 'Local headquarters', value: '1401 Charter Oak Ave, St. Helena, CA 94574.' },
+        {
+          label: 'Active valley capacity',
+          value: 'Five to six active builds at a time across the valley, protecting personal oversight on every site.',
+        },
+        {
+          label: 'Core services',
+          value:
+            'Custom Home Building, Luxury Home Remodeling (Structural Rebuilds), Winery & Estate Builds, and In-House Custom Millwork.',
+        },
+        { label: 'Direct access', value: 'Discuss your drawings and site conditions directly with Gar Rector.' },
+      ],
+    },
+    {
+      type: 'projects',
+      id: 'recent-work',
+      heading: 'Featured Napa Valley work',
+      items: [
+        {
+          project: projects['quail-camp'],
+          text: 'Four thousand square feet on raw land, with a timber frame barn, finished in under two years.',
+        },
+        {
+          project: projects['contemporary-farmhouse'],
+          text: 'Twenty-nine hundred square feet on a tear-down site two minutes from town.',
+        },
+        {
+          project: projects['mt-veeder'],
+          text: 'Twenty-nine hundred square feet on a hillside, down a narrow sloping driveway.',
+        },
+      ],
+      flags: [
+        permissionFlag(
+          'Live cards held. The revised cards need a title and credits (architect, interior designer, lead foreman) for each project.',
+        ),
       ],
     },
     {
@@ -143,28 +110,34 @@ export const napaValley: PageContent = {
       heading: 'Frequently asked questions',
       items: [
         {
-          q: 'Do you build outside Napa County?',
+          q: 'What is your service coverage within Napa Valley?',
           a: [
-            'Yes, for select projects, mostly in Sonoma County around Healdsburg, Santa Rosa and Glen Ellen. There is also permitted work on record as far out as Bodega Bay.',
+            'We build throughout Napa Valley, including St. Helena, Napa, Yountville, Oakville, Rutherford, and Calistoga. We also accept select custom residential projects in Sonoma County, including Healdsburg, Santa Rosa, and Glen Ellen.',
           ],
         },
         {
-          q: 'How many projects do you run at once?',
-          a: ['Five or six. That number is a choice rather than a ceiling, and it exists so Gar can be on each site.'],
-        },
-        {
-          q: 'Do you work with architects from outside the valley?',
-          a: ['Yes. We build from drawings by the architect you retain, wherever they are based.'],
-          flags: [
-            {
-              kind: 'input',
-              text: 'Item 16. The architect relationship list, and permission to name two or three. Naming local firms would make this answer worth reading.',
-            },
+          q: 'How do you handle Napa County zoning and building permit processes?',
+          a: [
+            'We review architectural drawing sets against local Napa County building, environmental health, and agricultural preserve regulations during pre-construction. We work directly with your architect and local county inspectors to navigate approvals cleanly.',
           ],
         },
-        { q: 'What happens if I get in touch?', a: [shared.firstStep] },
+        {
+          q: 'What experience do you have building in designated WUI fire zones?',
+          a: [
+            'We have built on hillside and rural parcels designated as high-fire zones for thirty-five years. We routinely execute structural steel framing, fire-resistant exterior cladding, ember-resistant venting, and fire-rated assemblies required under California Chapter 7A codes.',
+          ],
+        },
+        {
+          q: 'How do initial site evaluations and project discussions work?',
+          a: [
+            'Gar Rector meets directly with property owners and architects on-site to evaluate parcel topography, solar exposure, access roads, utilities, and preliminary architectural drawings before formal estimation begins.',
+          ],
+        },
       ],
     },
   ],
-  cta: { heading: shared.ctaHeading, text: shared.ctaText },
+  cta: {
+    heading: 'Start a conversation',
+    text: 'If you are planning a custom residence or estate build in Napa Valley, we welcome the opportunity to review your architectural drawings and site conditions.',
+  },
 };

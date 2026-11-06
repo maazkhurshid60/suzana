@@ -1,6 +1,5 @@
 // Checks the visible text of every prerendered page against the copy document's rules:
-// no em dashes, semicolons or exclamation points, "luxury" only in URLs and meta,
-// no founding year or "since" line, no dollar figures.
+// no em dashes or exclamation points, "luxury" only in the service name, no dollar figures.
 // Run after a public build: NEXT_PUBLIC_SITE_MODE=public npm run build && npm run check-copy
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -31,10 +30,8 @@ function visibleText(html) {
 
 const rules = [
   { name: 'em dash', re: /—/g },
-  { name: 'semicolon', re: /;/g },
   { name: 'exclamation point', re: /!/g },
   { name: '"luxury" in body copy', re: /luxury(?! home remodeling)/gi },
-  { name: 'founding year / since line', re: /\bsince \d{4}\b|\bfounded in\b|\bestablished in\b/gi },
   { name: 'dollar figure', re: /\$\s?\d/g },
 ];
 

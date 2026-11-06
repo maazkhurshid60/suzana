@@ -1,6 +1,7 @@
-import { areas, permissionFlag, projects, shared } from '../site';
+import { permissionFlag, projects } from '../site';
 import type { PageContent } from '../types';
 
+// Copy: "Homepage: copy update (V2)", November 5, 2026.
 export const home: PageContent = {
   path: '/',
   meta: {
@@ -9,44 +10,19 @@ export const home: PageContent = {
       'Gar Rector & Associates builds high-end custom homes in Napa Valley and Sonoma County from your architect’s drawings. Office and cabinet shop in St. Helena.',
   },
   hero: {
-    h1: 'A Napa Valley builder, on site',
-    sub: 'Gar Rector & Associates builds high-end custom homes in Napa Valley and Sonoma County, from the drawings your architect gives us.',
+    h1: 'Custom homes and estates built directly from architectural drawings',
+    sub: 'Gar Rector & Associates builds high-end custom residences across Napa Valley. We take on five or six homes at a time so that Gar Rector remains directly engaged on your project.',
+    trust: 'Building in St. Helena and Napa Valley since 1991.',
     ctas: ['conversation', 'work'],
     workHref: '#recent-work',
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'What people are usually deciding',
+      heading: 'A collaborative approach to architectural construction',
       body: [
-        'Most people who get in touch already have a site and an architect. The question in front of them is who runs the job from there, and whether the person they meet first will be the person on the site a year later.',
-        'Gar Rector is on the job site running the work. That is the whole arrangement, and it is why about ninety percent of the work comes by referral.',
-      ],
-    },
-    {
-      type: 'offerings',
-      heading: 'What we build',
-      items: [
-        {
-          title: 'Custom home building',
-          text: 'Full-structure new homes built from your architect’s drawings, foundation through finish.',
-          href: '/services/custom-home-building/',
-        },
-        {
-          title: 'Winery and estate builds',
-          text: 'Larger properties where the house is one building among several, and the site work is most of the first year.',
-          href: '/services/winery-estate-builds/',
-        },
-        {
-          title: 'Remodeling',
-          text: 'Houses rebuilt to the studs on lots that already exist, which in this valley is most of what is left to build.',
-          href: '/services/luxury-home-remodeling/',
-        },
-        {
-          title: 'Cabinetry and millwork',
-          text: 'Made in our own shop in St. Helena, on our own schedule.',
-          href: '/services/custom-cabinetry/',
-        },
+        'Building an architecturally complex custom residence requires continuous alignment between the drawings, the field engineering, and the trades on site. From our offices in St. Helena, Gar Rector & Associates works in direct partnership with independent architecture firms and estate owners throughout Napa Valley.',
+        'Gar coordinates structural problem-solving and design decisions directly with project architects, while our dedicated lead foremen direct daily site operations. We do not alter design intent. Our role is to navigate the physical constraints of the site and execute the drawings with structural discipline.',
       ],
     },
     {
@@ -68,27 +44,79 @@ export const home: PageContent = {
         },
       ],
       cta: { label: 'See the work', href: '/services/custom-home-building/#recent-work' },
-      flags: [permissionFlag('Written permission for each project named above. Nothing in this block publishes without it.')],
+      flags: [
+        permissionFlag(
+          'Live tiles held. The revised tiles need the project titles and architect names, and each links to a /work/ page that is not built yet.',
+        ),
+      ],
     },
     {
-      type: 'prose',
-      heading: 'How we work',
-      body: [
-        `${shared.architect} Where a detail is hard to build, we work it out with the design team rather than around them.`,
-        'A budget is built line by line from completed architectural and engineering drawings, before anything starts on site. There is no estimate form and no automated quote.',
-        'Five or six builds run at a time, with 20 to 25 staff plus subcontractors, three of them in the cabinet shop. That number is deliberate. The aim has never been more houses.',
+      type: 'offerings',
+      heading: 'What we build',
+      items: [
+        {
+          title: 'Custom Home Building',
+          text: 'Ground-up residential construction for complex hillside and valley parcels, executed with strict drawing fidelity.',
+          href: '/services/custom-home-building/',
+        },
+        {
+          title: 'Luxury Home Remodeling',
+          text: 'Full structural rebuilds, foundation re-engineering, and deep estate modernizations within existing zoning footprints.',
+          href: '/services/luxury-home-remodeling/',
+        },
+        {
+          title: 'Winery & Estate Builds',
+          text: 'Multi-structure estate footprints, heavy timber framing, hospitality barns, and agricultural infrastructure coordination.',
+          href: '/services/winery-estate-builds/',
+        },
+        {
+          title: 'In-House Custom Millwork',
+          text: 'Architectural cabinetry, wall paneling, and custom joinery built inside our own St. Helena workshop.',
+          href: '/services/custom-cabinetry/',
+        },
       ],
     },
     {
       type: 'prose',
-      heading: 'Where we build',
+      heading: 'Thirty-five years of building in Napa Valley',
       body: [
+        'Gar Rector & Associates has built throughout Napa Valley since 1991. Supported by a permanent field crew of 20 to 25 tradespeople and our St. Helena custom millwork shop, we maintain a deliberate capacity cap of five to six active builds at any time.',
+        'Managing five or six projects simultaneously gives our team the scale to secure top trade partners while ensuring that Gar personally visits active sites, reviews framing lines, and stays accessible to every architect and estate owner.',
+      ],
+    },
+    {
+      type: 'faq',
+      heading: 'Frequently asked questions',
+      items: [
         {
-          text: 'St. Helena, Napa, Yountville, Calistoga, Oakville and Rutherford across Napa Valley. Healdsburg, Santa Rosa and Glen Ellen in Sonoma County for select projects.',
-          links: areas,
+          q: 'Do you design houses, or do you build from an architect’s plans?',
+          a: [
+            'We build strictly from drawings prepared by your retained architect. Our focus is executing architectural drawings with structural precision, managing trades, and coordinating site logistics.',
+          ],
+        },
+        {
+          q: 'Who is actually running my project day to day?',
+          a: [
+            'A dedicated lead foreman is assigned exclusively to your site every working day. Gar Rector oversees design milestones, visits active jobs on rotation, and coordinates directly with you and your architect.',
+          ],
+        },
+        {
+          q: 'Where do you build?',
+          a: [
+            'We build throughout Napa Valley, including St. Helena, Napa, Yountville, Oakville, Rutherford, and Calistoga. We also accept select custom residential projects in Sonoma County.',
+          ],
+        },
+        {
+          q: 'Why do you limit your capacity to five or six active builds?',
+          a: [
+            'Because a bespoke, high-touch building experience cannot be delivered at scale. Limiting our project load ensures that Gar personally supervises structural details and remains directly accessible to every client.',
+          ],
         },
       ],
     },
   ],
-  cta: { heading: shared.ctaHeading, text: shared.ctaText },
+  cta: {
+    heading: 'Start a conversation',
+    text: 'Discuss your architectural drawings and site conditions directly with Gar Rector.',
+  },
 };

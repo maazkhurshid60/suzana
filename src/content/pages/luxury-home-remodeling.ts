@@ -1,6 +1,7 @@
-import { permissionFlag, placeholderPhoto, projects, shared, testimonialFlag } from '../site';
+import { permissionFlag, placeholderPhoto, projects } from '../site';
 import type { PageContent } from '../types';
 
+// Copy: "Luxury home remodeling page: copy update (V2)", November 5, 2026.
 export const luxuryHomeRemodeling: PageContent = {
   path: '/services/luxury-home-remodeling/',
   meta: {
@@ -10,75 +11,84 @@ export const luxuryHomeRemodeling: PageContent = {
   },
   eyebrow: 'Services',
   hero: {
-    h1: 'Home remodeling in Napa Valley',
+    h1: 'Luxury home remodeling in Napa Valley',
     image: '/media/photos/hero-remodeling.jpg',
-    sub: 'Houses rebuilt to the studs, by the builder who runs the job on site.',
+    sub: 'Full structural rebuilds, footprint transformations, and estate modernizations executed in direct partnership with architects.',
+    trust: 'Building in St. Helena and throughout Napa Valley since 1991.',
     ctas: ['conversation'],
   },
   blocks: [
     {
       type: 'prose',
-      heading: 'Most of what is worth building here is already standing',
+      heading: 'Rebuilding within established residential footprints',
       body: [
-        'A good deal of our work starts with a house somebody already owns, or one they are about to buy because of where it sits. The lot is right, the house is not, and the question is how far down to take it.',
-        'That decision sets everything after it. A house taken back to the studs is a different project from one where the structure stays and the plan changes, and the budget, the permit path and the schedule all follow from which one it is.',
+        'In Napa Valley, unbuilt land is rare. Strict agricultural zoning, hillside slope restrictions, and county parcel boundaries mean that expanding outward is rarely an option. For significant estate properties, a major remodel is almost always a full structural rebuild: taking an existing structure down to the framing or foundation to create an entirely modern home within the legally permitted footprint.',
+        'Gar Rector & Associates specializes in these complex transformations. Working directly from architectural drawings, we re-engineer structural loads for open spans, integrate expansive architectural glass, and update building assemblies to strict Wildland-Urban Interface (WUI) standards without sacrificing design intent.',
       ],
     },
     {
       type: 'prose',
-      heading: 'How we approach it',
+      heading: 'How we build',
+      body: [
+        'A major structural remodel demands continuous collaboration between design coordination, engineering tolerances, and daily trade discipline.',
+      ],
       subsections: [
         {
-          heading: 'We find out what the house actually is first',
+          heading: 'Foundation and structural re-engineering',
           body: [
-            'An existing house hides things. What is behind the walls, what the original framing will carry, what was added later and how. Opening it up is the only way to know, and it is better to know before the drawings are final than halfway through the build.',
+            'Modern architectural plans often demand open spatial layouts, high ceilings, and floor-to-ceiling glass that original valley structures were never engineered to carry. Gar collaborates directly with your architect and structural engineer to set structural steel frames, underpin foundations, and resolve unexpected framing constraints discovered inside existing walls.',
           ],
         },
         {
-          heading: 'We build from your architect’s drawings',
+          heading: 'Dedicated lead foreman on site',
           body: [
-            'We build from drawings by the architect you retain. On a remodel that means working with the design team on the places where the existing structure and the new plan disagree, rather than solving it quietly in the field.',
+            'Every project is assigned a dedicated lead foreman who remains on the job site every working day. Supported by our St. Helena office team, the lead foreman manages specialized subcontractors, directs demolition and framing crews, enforces clean job-site protocols, and maintains project momentum with quiet discipline.',
           ],
         },
         {
-          heading: 'Cabinetry and millwork from our own shop',
+          heading: 'In-house millwork and architectural joinery',
           body: [
             {
-              text: 'On a remodel the finish work is most of what the owner sees, and it is also where schedules usually slip. Ours is built in our own shop in St. Helena by a three-person team, which means it runs on our calendar.',
+              text: 'Deep residential transformations require custom interior alignment across cabinetry, ceiling planes, and wall paneling. Our in-house St. Helena custom millwork shop builds architectural cabinetry, paneling, and interior detail directly for our projects, ensuring exact joinery tolerances and eliminating third-party lead time bottlenecks.',
               links: [{ label: 'Custom Cabinetry', href: '/services/custom-cabinetry/' }],
             },
-          ],
-        },
-        {
-          heading: 'It is still Gar on the site',
-          body: [
-            'A remodel generates more decisions per week than a new build, because the house keeps producing surprises. Gar is on the job site running the work, which is how those get resolved the same day rather than the following week.',
           ],
         },
       ],
     },
     {
       type: 'glance',
+      heading: 'Project operations',
       rows: [
         {
-          label: 'Who it is for',
-          value: 'Owners and architects remodeling high-end homes in Napa Valley, and in Sonoma County for select projects',
+          label: 'Locations served',
+          value: 'St. Helena, Napa, Yountville, Calistoga, Oakville, and Rutherford. Select projects in Sonoma County.',
         },
-        { label: 'Where we build', value: shared.whereWeBuild },
+        { label: 'Active capacity', value: 'Five to six active builds at a time, protecting personal oversight across every site.' },
         {
-          label: 'Scope',
-          value: 'Whole-house remodels, rebuilds to the studs, additions, cabinetry and millwork from our own shop',
+          label: 'Working arrangement',
+          value:
+            'Direct collaboration with retained architects. Gar coordinates design and engineering milestones; dedicated lead foremen run daily field operations.',
         },
-        { label: 'Also in scope', value: 'Tear-down and rebuild, where the existing house is not worth keeping' },
-        { label: 'How the number gets built', value: shared.budget },
-        { label: 'Timeline', flags: [{ kind: 'input', text: 'Item 4. Typical remodel duration.' }] },
-        { label: 'License', value: 'California CSLB 664538, General Building (B)' },
+        {
+          label: 'Scope of work',
+          value:
+            'Full structural rebuilds, foundation underpinning, structural steel retrofit, WUI fire compliance, and in-house custom millwork.',
+        },
+        {
+          label: 'Administrative support',
+          value: 'Dedicated office team coordinating project administration, trade contracts, and client billing.',
+        },
+        {
+          label: 'Build duration',
+          flags: [{ kind: 'input', text: 'Typical duration range for a structural rebuild, from demolition to occupancy.' }],
+        },
       ],
     },
     {
       type: 'projects',
       id: 'recent-work',
-      heading: 'Recent work',
+      heading: 'Selected rebuild projects',
       image: placeholderPhoto(
         'contemporary-stone-house.jpg',
         'Bondi Beach House exterior, full width. Originals needed, the existing gallery is screenshots.',
@@ -96,14 +106,17 @@ export const luxuryHomeRemodeling: PageContent = {
         },
       ],
       flags: [
-        permissionFlag('Written permission for both projects, and to name Scott Bechtle.'),
-        testimonialFlag(
-          'One written testimonial, ideally from the Bondi owners. A remodel buyer is buying trust in a way a new-build buyer is not, and this page feels the absence more than the others do.',
+        permissionFlag(
+          'Live cards held. The revised cards need a title, completion year, square footage and credits (architect, interior designer, lead foreman) for each project.',
         ),
-        {
-          kind: 'decision',
-          text: 'Whether the Contemporary Farmhouse belongs here at all. Running it on both this page and Custom Home Building weakens both. Recommendation: it stays on Custom Home Building and this page gets a second remodel instead.',
-        },
+      ],
+    },
+    {
+      type: 'prose',
+      heading: 'Built on thirty-five years of local presence',
+      body: [
+        'Gar Rector & Associates has built and rebuilt residences across Napa Valley since 1991. With a permanent team of 20 to 25 field professionals and our own custom millwork shop, we deliberately cap our active projects at five or six at any given time.',
+        'This controlled volume ensures that Gar remains personally engaged on engineering decisions and architect collaboration throughout the build. You work directly with the builder whose name is on the company, backed by dedicated foremen and seasoned trade crews.',
       ],
     },
     {
@@ -111,44 +124,34 @@ export const luxuryHomeRemodeling: PageContent = {
       heading: 'Frequently asked questions',
       items: [
         {
-          q: 'How do I know whether to remodel or rebuild?',
+          q: 'What is the difference between a remodel and a full rebuild in Napa Valley?',
           a: [
-            'Usually you do not, until somebody has looked at the house properly. What the structure will carry, what the permit path looks like and what the existing plan is fighting all feed into it. That conversation happens before drawings are final, with you and your architect.',
+            'Because buildable land is scarce, high-end remodels in Napa Valley typically involve stripping a home to its foundation or framing, re-engineering structural loads, and completely rebuilding the residence within the grandfathered footprint to meet modern architectural standards and county building codes.',
           ],
         },
         {
-          q: 'Can you work on a house I have not bought yet?',
-          a: ['Yes. Walking a house before an offer is a sensible use of an hour, and it is a conversation rather than a job.'],
-        },
-        {
-          q: 'Do you take on single rooms, like a kitchen?',
+          q: 'Do you take on small cosmetic remodels or single-room updates?',
           a: [
-            'Our work is whole-house, and that is where we are useful. A single-room project is usually better served by a builder set up for it, and we will say so.',
+            'We focus exclusively on full-structure rebuilds, major architectural modernizations, and deep estate transformations built directly from formal architectural and engineering drawings.',
           ],
         },
         {
-          q: 'Will the cabinetry match the rest of the house?',
+          q: 'Who oversees my remodel job site day to day?',
           a: [
-            'It is built in our shop to the drawings for your house, so matching an existing millwork detail or a new one is the same job. The three-person team that builds it works on our schedule rather than a supplier’s.',
+            'A dedicated lead foreman is stationed on your site every working day to direct subcontractors and enforce framing tolerances. Gar Rector oversees structural milestones, visits active projects on rotation, and coordinates engineering solutions directly with your architect.',
           ],
         },
         {
-          q: 'How does budgeting work when nobody knows what is behind the walls?',
+          q: 'How do you handle initial project budgeting on a complex rebuild?',
           a: [
-            'A budget gets built line by line from completed architectural and engineering drawings. On a remodel that budget carries the known unknowns openly rather than burying them, and the figure tightens as the house gets opened up. We do not quote from a square-foot figure.',
-          ],
-        },
-        {
-          q: 'What happens if I get in touch?',
-          a: [
-            'You talk to Gar, and then you walk the house with him. There is no estimate form and no automated quote. If the project is not a fit, he will say so and point you somewhere better.',
+            'Budgets are developed through line-item estimates derived from completed architectural and structural engineering drawings. This establishes defined scopes and cost transparency before demolition begins.',
           ],
         },
       ],
     },
   ],
   cta: {
-    heading: shared.ctaHeading,
-    text: 'Bring the house and your drawings, however far along they are. The first step is a conversation, not a quote.',
+    heading: 'Start a conversation',
+    text: 'If you are planning a structural rebuild or deep residential transformation in Napa Valley or Sonoma County, we welcome the opportunity to review your architectural drawings and site conditions.',
   },
 };
