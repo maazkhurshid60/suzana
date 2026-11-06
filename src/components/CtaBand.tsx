@@ -1,28 +1,32 @@
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { getBusiness, getChrome } from '@/lib/content';
-import { ButtonLink, CONVERSATION_HREF } from './Buttons';
+import { CONVERSATION_HREF } from './Buttons';
 import { Reveal } from './Reveal';
 
+/** The closing invitation on every page: a statement on the ink, with the two ways to reach Gar. */
 export async function CtaBand({ heading, text }: { heading: string; text: string }) {
   const [business, chrome] = await Promise.all([getBusiness(), getChrome()]);
   return (
-    <section className="bg-neutral-50 px-3 pb-10 md:px-5 md:pb-14 lg:px-6">
-      <div className="mx-auto overflow-hidden rounded-[28px] bg-neutral-950 md:rounded-[36px]">
-        <Reveal className="mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center md:py-28">
-          <h2 className="text-4xl leading-[1.05] text-white md:text-5xl lg:text-[58px]">{heading}</h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg">{text}</p>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-            <ButtonLink href={CONVERSATION_HREF} variant="light">
+    <section className="on-dark bg-ink text-paper">
+      <Reveal className="mx-auto grid w-full max-w-site gap-12 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-24">
+        <div>
+          <p className="eyebrow !text-bronze-light">Inquiries</p>
+          <h2 className="mt-8 text-[clamp(2.75rem,5.5vw,5rem)] font-light leading-[1.02] text-paper">{heading}</h2>
+        </div>
+        <div>
+          <p className="max-w-md text-base leading-relaxed text-paper/70 md:text-lg">{text}</p>
+          <div className="mt-10 flex flex-col items-start gap-6">
+            <Link href={CONVERSATION_HREF} className="text-link text-paper hover:text-bronze-light">
               {chrome.buttonLabels.conversation}
-            </ButtonLink>
-            <a
-              href={business.phoneHref}
-              className="font-label text-sm font-semibold tracking-wide text-white/80 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white"
-            >
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+            </Link>
+            <a href={business.phoneHref} className="font-mono text-[12px] uppercase tracking-[0.18em] text-paper/60 transition-colors hover:text-paper">
               or call {business.phone}
             </a>
           </div>
-        </Reveal>
-      </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

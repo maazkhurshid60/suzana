@@ -1,7 +1,6 @@
-import { Clock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { Flags } from '@/components/Flags';
-import { Section, SectionHeading } from '@/components/blocks/Section';
+import { Section, SectionHeading, SectionNumber } from '@/components/blocks/Section';
 import { PageHero } from '@/components/Heroes';
 import { getBusiness, getChrome, getContactPage } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
@@ -15,10 +14,9 @@ export default async function ContactPage() {
 
   const details = [
     {
-      icon: Phone,
       label: 'Phone',
       value: (
-        <a href={business.phoneHref} className="transition-colors hover:text-black">
+        <a href={business.phoneHref} className="transition-colors hover:text-bronze">
           {business.phone}
         </a>
       ),
@@ -26,10 +24,9 @@ export default async function ContactPage() {
     ...(business.email
       ? [
           {
-            icon: Mail,
             label: 'Email',
             value: (
-              <a href={`mailto:${business.email}`} className="transition-colors hover:text-black">
+              <a href={`mailto:${business.email}`} className="transition-colors hover:text-bronze">
                 {business.email}
               </a>
             ),
@@ -37,7 +34,6 @@ export default async function ContactPage() {
         ]
       : []),
     {
-      icon: MapPin,
       label: 'Office and shop',
       value: (
         <>
@@ -48,7 +44,6 @@ export default async function ContactPage() {
       ),
     },
     {
-      icon: Clock,
       label: 'Hours',
       value: (
         <>
@@ -58,7 +53,7 @@ export default async function ContactPage() {
         </>
       ),
     },
-    { icon: ShieldCheck, label: 'License', value: business.license },
+    { label: 'License', value: business.license },
   ];
 
   return (
@@ -72,26 +67,23 @@ export default async function ContactPage() {
       <Flags flags={contact.review} className="mx-auto max-w-3xl px-4" />
 
       <Section tone="light">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
           <div>
+            <SectionNumber n={1} className="mb-7" />
             <SectionHeading>{contact.whatHappens.heading}</SectionHeading>
             {contact.whatHappens.body.map((para) => (
-              <p key={para} className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg">
+              <p key={para} className="mt-6 text-base leading-[1.75] text-muted md:text-[17px]">
                 {para}
               </p>
             ))}
 
-            <h2 className="mt-14 text-3xl text-neutral-950 md:text-4xl">{contact.getInTouchHeading}</h2>
-            <dl className="mt-6 space-y-6 border-t border-neutral-200 pt-8">
-              {details.map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-neutral-700">
-                    <Icon className="h-5 w-5" strokeWidth={1.5} />
-                  </span>
-                  <div>
-                    <dt className="font-label text-xs uppercase tracking-[0.2em] text-neutral-500">{label}</dt>
-                    <dd className="mt-1 text-base leading-relaxed text-neutral-800">{value}</dd>
-                  </div>
+            <SectionNumber n={2} className="mb-7 mt-16" />
+            <h2 className="text-[2.25rem] font-light leading-tight text-ink md:text-[2.75rem]">{contact.getInTouchHeading}</h2>
+            <dl className="mt-8 border-t border-ink/80">
+              {details.map(({ label, value }) => (
+                <div key={label} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[160px_1fr] sm:gap-8">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze sm:pt-1">{label}</dt>
+                  <dd className="text-base leading-relaxed text-ink">{value}</dd>
                 </div>
               ))}
             </dl>
@@ -99,7 +91,8 @@ export default async function ContactPage() {
           </div>
 
           <div>
-            <h2 className="mb-6 text-3xl text-neutral-950 md:text-4xl">{contact.formHeading}</h2>
+            <SectionNumber n={3} className="mb-7" />
+            <h2 className="mb-8 text-[2.25rem] font-light leading-tight text-ink md:text-[2.75rem]">{contact.formHeading}</h2>
             <ContactForm stages={contact.stages} phone={business.phone} />
             <Flags flags={contact.formFlags} className="mt-4" />
           </div>

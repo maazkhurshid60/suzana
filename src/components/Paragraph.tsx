@@ -13,7 +13,7 @@ export function Paragraph({ para, className = '' }: { para: Para; className?: st
         <Link
           key={link.href}
           href={link.href}
-          className="group ml-3 inline-flex items-center gap-1 whitespace-nowrap font-label text-[13px] font-semibold uppercase tracking-wide text-neutral-900 underline decoration-neutral-300 underline-offset-4 transition-colors hover:decoration-neutral-900"
+          className="group ml-3 inline-flex items-center gap-1.5 whitespace-nowrap border-b border-ink/40 pb-0.5 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition-colors hover:border-bronze hover:text-bronze"
         >
           {link.label}
           <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

@@ -46,7 +46,7 @@ export function HeroVideo({ src, poster }: { src: string; poster?: string }) {
         type="button"
         onClick={toggle}
         aria-label={playing ? 'Pause background video' : 'Play background video'}
-        className="absolute bottom-5 right-5 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50 md:bottom-8 md:right-8"
+        className="absolute bottom-20 right-5 z-20 flex h-10 w-10 items-center justify-center border border-white/30 bg-black/20 text-white backdrop-blur-sm transition-colors hover:bg-black/50 md:bottom-24 md:right-10"
       >
         {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
       </button>

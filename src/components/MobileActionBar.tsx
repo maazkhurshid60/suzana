@@ -12,19 +12,19 @@ export function MobileActionBar({ phone, button }: { phone: NavLink; button: Nav
   return (
     <>
       {/* Reserves room so the bar never covers the end of the footer. */}
-      <div className="h-[76px] bg-neutral-950 lg:hidden" aria-hidden="true" />
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/95 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden">
+      <div className="h-[76px] bg-ink lg:hidden" aria-hidden="true" />
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/95 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden">
         <div className="mx-auto flex max-w-md gap-3">
           <a
             href={phone.href}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-black/15 px-4 py-3 font-label text-sm font-semibold text-black"
+            className="inline-flex flex-1 items-center justify-center gap-2 border border-ink/25 px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink"
           >
             <Phone className="h-4 w-4" />
             Call
           </a>
           <Link
             href={button.href}
-            className="inline-flex flex-[1.6] items-center justify-center gap-2 rounded-full bg-black px-4 py-3 font-label text-sm font-semibold text-white"
+            className="inline-flex flex-[1.6] items-center justify-center gap-2 bg-ink px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-paper"
           >
             {button.label}
             <ArrowUpRight className="h-4 w-4" />

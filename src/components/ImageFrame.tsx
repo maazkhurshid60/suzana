@@ -12,7 +12,7 @@ import { hasPhoto, REVIEW_MODE } from '@/lib/review';
 export function ImageFrame({ image, className = '' }: { image: ImageSlot; className?: string }) {
   if (hasPhoto(image) && image.src) {
     return (
-      <div className={`relative overflow-hidden rounded-[28px] bg-neutral-200 ${className}`}>
+      <div className={`relative overflow-hidden bg-paper-deep ${className}`}>
         <Image src={image.src} alt={image.alt ?? ''} fill sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
       </div>
     );
@@ -20,7 +20,7 @@ export function ImageFrame({ image, className = '' }: { image: ImageSlot; classN
   if (!REVIEW_MODE) return null;
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-3 rounded-[28px] border border-dashed border-neutral-300 bg-[repeating-linear-gradient(135deg,theme(colors.neutral.100),theme(colors.neutral.100)_14px,theme(colors.neutral.50)_14px,theme(colors.neutral.50)_28px)] px-6 text-center ${className}`}
+      className={`flex flex-col items-center justify-center gap-3 border border-dashed border-ink/25 bg-[repeating-linear-gradient(135deg,theme(colors.neutral.100),theme(colors.neutral.100)_14px,theme(colors.neutral.50)_14px,theme(colors.neutral.50)_28px)] px-6 text-center ${className}`}
     >
       <ImageIcon className="h-7 w-7 text-neutral-400" strokeWidth={1.25} />
       <p className="max-w-md font-label text-xs uppercase tracking-[0.18em] text-neutral-500">Photo needed</p>

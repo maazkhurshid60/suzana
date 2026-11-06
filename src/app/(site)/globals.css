@@ -9,8 +9,8 @@ html {
 
 body {
   font-family: var(--font-body), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: theme('colors.neutral.50');
-  color: theme('colors.neutral.900');
+  background: theme('colors.paper.DEFAULT');
+  color: theme('colors.ink.DEFAULT');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,11 +21,48 @@ h3,
 h4 {
   font-family: var(--font-heading), Georgia, serif;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
-  background: theme('colors.neutral.900');
-  color: theme('colors.neutral.50');
+  background: theme('colors.bronze.DEFAULT');
+  color: theme('colors.paper.DEFAULT');
+}
+
+/* A small capitals label led by a short rule: "—— Featured work". */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: theme('colors.bronze.DEFAULT');
+}
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+/* Text link with an arrow, the site's quiet call to action. */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid currentColor;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+.text-link:hover {
+  gap: 0.95rem;
 }
 
 /* Scroll reveal, applied by the Reveal component only after hydration. */
@@ -39,6 +76,30 @@ h4 {
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* Header dropdowns ease down into place. */
+.menu-in {
+  animation: menu-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-fade {
+  animation: menu-fade 0.4s ease both;
+}
+@keyframes menu-fade {
+  from {
+    opacity: 0;
+  }
 }
 
 /* Inner-page hero photo settles in with a slow zoom out. */
@@ -58,6 +119,8 @@ h4 {
   html {
     scroll-behavior: auto;
   }
+  .menu-in,
+  .menu-fade,
   .hero-photo {
     animation: none;
   }
@@ -65,19 +128,12 @@ h4 {
 
 /* Visible keyboard focus everywhere, invisible for mouse and touch. */
 :focus-visible {
-  outline: 2px solid theme('colors.neutral.900');
+  outline: 2px solid theme('colors.ink.DEFAULT');
   outline-offset: 3px;
 }
-.bg-neutral-950 :focus-visible,
-footer :focus-visible {
+.bg-ink :focus-visible,
+footer :focus-visible,
+.on-dark :focus-visible {
   outline-color: theme('colors.white');
 }
 
-/* Faint blueprint grid for the dark inner-page hero. */
-.blueprint-grid {
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at 75% 40%, black 10%, transparent 70%);
-}

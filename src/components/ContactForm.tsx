@@ -4,8 +4,8 @@ import { useState, type FormEvent } from 'react';
 import { CheckCircle2, Send } from 'lucide-react';
 
 const field =
-  'w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-neutral-400 focus:border-white/50 focus:ring-2 focus:ring-white/20';
-const label = 'mb-1.5 block font-label text-sm font-medium text-neutral-300';
+  'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none placeholder:text-muted/60 focus:border-ink focus:ring-0';
+const label = 'block font-mono text-[11px] uppercase tracking-[0.18em] text-bronze';
 
 export function ContactForm({ stages, phone }: { stages: string[]; phone: string }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -46,10 +46,10 @@ export function ContactForm({ stages, phone }: { stages: string[]; phone: string
 
   if (status === 'sent') {
     return (
-      <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[28px] bg-neutral-950 p-10 text-center text-white">
-        <CheckCircle2 className="h-10 w-10 text-white" strokeWidth={1.25} />
+      <div className="flex min-h-[420px] flex-col items-center justify-center border border-line bg-paper-deep p-10 text-center text-ink">
+        <CheckCircle2 className="h-10 w-10 text-bronze" strokeWidth={1.25} />
         <p className="mt-6 font-heading text-3xl">Thank you. We have your note.</p>
-        <p className="mt-3 max-w-sm text-sm leading-relaxed text-neutral-400">
+        <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
           If it is easier to talk now, call {phone}.
         </p>
       </div>
@@ -57,7 +57,7 @@ export function ContactForm({ stages, phone }: { stages: string[]; phone: string
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="relative rounded-[28px] bg-neutral-950 p-6 text-white md:p-10">
+    <form onSubmit={handleSubmit} noValidate className="relative border border-line bg-paper-deep p-6 text-ink md:p-10">
       <div className="grid gap-5">
         <div>
           <label htmlFor="name" className={label}>
@@ -81,7 +81,7 @@ export function ContactForm({ stages, phone }: { stages: string[]; phone: string
         </div>
         <div>
           <label htmlFor="location" className={label}>
-            Where the project is <span className="text-neutral-500">(town is enough)</span>
+            Where the project is <span className="normal-case tracking-normal text-muted">(town is enough)</span>
           </label>
           <input id="location" name="location" className={field} />
         </div>
@@ -89,7 +89,7 @@ export function ContactForm({ stages, phone }: { stages: string[]; phone: string
           <label htmlFor="stage" className={label}>
             What stage it is at
           </label>
-          <select id="stage" name="stage" defaultValue="" className={`${field} bg-neutral-950`}>
+          <select id="stage" name="stage" defaultValue="" className={`${field} bg-paper-deep`}>
             <option value="" disabled>
               Choose one
             </option>
@@ -117,14 +117,14 @@ export function ContactForm({ stages, phone }: { stages: string[]; phone: string
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 font-label text-sm font-semibold tracking-wide text-black transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-9 inline-flex w-full items-center justify-center gap-3 bg-ink px-8 py-4 font-mono text-[12px] uppercase tracking-[0.18em] text-paper transition-colors hover:bg-bronze disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === 'sending' ? 'Sending' : 'Send'}
         {status !== 'sending' && <Send className="h-4 w-4" />}
       </button>
 
       {status === 'error' && (
-        <p role="alert" className="mt-4 rounded-xl border border-red-300/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+        <p role="alert" className="mt-4 border border-red-700/30 bg-red-50 px-4 py-3 text-sm text-red-900">
           {error}
         </p>
       )}

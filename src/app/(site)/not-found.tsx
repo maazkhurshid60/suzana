@@ -7,13 +7,13 @@ export const metadata: Metadata = { title: 'Page not found', robots: { index: fa
 export default async function NotFound() {
   const [business, chrome] = await Promise.all([getBusiness(), getChrome()]);
   return (
-    <section className="flex min-h-[80vh] items-center bg-neutral-50 px-4 pb-20 pt-[150px]">
+    <section className="flex min-h-[80vh] items-center bg-paper px-5 pb-24 pt-[160px]">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="font-label text-xs uppercase tracking-[0.28em] text-neutral-500">404</p>
-        <h1 className="mt-6 text-5xl font-light leading-tight text-neutral-950 md:text-6xl">{chrome.notFound.heading}</h1>
-        <p className="mt-6 text-base leading-relaxed text-neutral-600 md:text-lg">{chrome.notFound.text}</p>
-        <p className="mt-2 text-base text-neutral-600 md:text-lg">
-          <a href={business.phoneHref} className="underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-900">
+        <p className="eyebrow">404</p>
+        <h1 className="mt-8 text-5xl font-light leading-[1.05] text-ink md:text-7xl">{chrome.notFound.heading}</h1>
+        <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">{chrome.notFound.text}</p>
+        <p className="mt-2 text-base text-muted md:text-lg">
+          <a href={business.phoneHref} className="underline decoration-ink/30 underline-offset-4 hover:decoration-ink">
             {business.phone}
           </a>
         </p>

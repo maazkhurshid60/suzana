@@ -4,30 +4,29 @@ import type { Link as NavLink } from '@/content/types';
 import { Section, type Tone } from './blocks/Section';
 import { Reveal } from './Reveal';
 
-/** The other pages in the same menu dropdown, so a visitor reading one service can move to the next. */
+/** The other pages in the same menu dropdown, as a ruled index, so a visitor reading one service can move to the next. */
 export function KeepExploring({ label, links, tone }: { label: string; links: NavLink[]; tone: Tone }) {
   return (
     <Section tone={tone}>
-      <Reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="font-label text-xs font-medium uppercase tracking-[0.28em] text-neutral-500">Keep exploring</p>
-          <h2 className="mt-4 text-3xl leading-tight text-neutral-950 md:text-4xl">{label}</h2>
-        </div>
-      </Reveal>
-      <Reveal className="mt-10 grid gap-px overflow-hidden rounded-[22px] border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:grid-cols-3">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="group flex items-center justify-between gap-6 bg-white px-7 py-7 transition-colors hover:bg-neutral-950"
-          >
-            <span className="font-heading text-2xl text-neutral-950 transition-colors group-hover:text-white">{link.label}</span>
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition-all group-hover:border-white/30 group-hover:text-white">
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </span>
-          </Link>
-        ))}
-      </Reveal>
+      <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
+        <Reveal>
+          <p className="eyebrow">Keep exploring</p>
+          <h2 className="mt-7 text-[2.25rem] font-light leading-tight text-ink md:text-[2.75rem]">{label}</h2>
+        </Reveal>
+        <Reveal className="border-t border-line">
+          {links.map((link, i) => (
+            <Link key={link.href} href={link.href} className="group flex items-center justify-between gap-6 border-b border-line py-6">
+              <span className="flex items-baseline gap-6">
+                <span className="font-mono text-[11px] tracking-[0.2em] text-bronze">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-heading text-[1.75rem] leading-tight text-ink transition-colors group-hover:text-bronze md:text-[2rem]">
+                  {link.label}
+                </span>
+              </span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-ink transition-transform duration-300 group-hover:translate-x-1.5" strokeWidth={1.5} />
+            </Link>
+          ))}
+        </Reveal>
+      </div>
     </Section>
   );
 }

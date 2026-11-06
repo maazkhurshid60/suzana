@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import { Cormorant_Garamond, DM_Mono, Inter } from 'next/font/google';
 import { Footer } from '@/components/Footer';
 import { MobileActionBar } from '@/components/MobileActionBar';
 import { ReviewBanner } from '@/components/Flags';
@@ -7,7 +7,7 @@ import { Navbar } from '@/components/Navbar';
 import { NavigationSkeleton } from '@/components/NavigationSkeleton';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { business as localBusiness } from '@/content/site';
-import { getBusiness, getChrome } from '@/lib/content';
+import { getBusiness, getChrome, getMenuPreviews } from '@/lib/content';
 import { INDEXABLE } from '@/lib/review';
 import './globals.css';
 
@@ -26,6 +26,9 @@ const heading = Cormorant_Garamond({
 // and Android, where visitors would otherwise see Arial.
 const body = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
 
+// Small capitals labels, captions and numbering, set like the notes on a drawing.
+const mono = DM_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' });
+
 export const metadata: Metadata = {
   metadataBase: new URL(localBusiness.siteUrl),
   title: { default: localBusiness.name, template: `%s | ${localBusiness.name}` },
@@ -33,10 +36,10 @@ export const metadata: Metadata = {
   robots: INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
 };
 
-export const viewport: Viewport = { themeColor: '#0a0a0a' };
+export const viewport: Viewport = { themeColor: '#EEEBE5' };
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const [business, chrome] = await Promise.all([getBusiness(), getChrome()]);
+  const [business, chrome, previews] = await Promise.all([getBusiness(), getChrome(), getMenuPreviews()]);
 
   // Only the Charter Oak address appears here. The Elmshaven legal address never goes into schema.
   const jsonLd = {
@@ -69,12 +72,12 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     // data-scroll-behavior lets Next.js switch smooth scrolling off while it changes page,
     // so navigation jumps straight to the top instead of animating.
-    <html lang="en" className={`${heading.variable} ${body.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${heading.variable} ${body.variable} ${mono.variable}`} data-scroll-behavior="smooth">
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-black focus:px-5 focus:py-3 focus:text-sm focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-white"
         >
           Skip to content
         </a>
@@ -84,6 +87,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           menu={chrome.menu}
           button={chrome.headerButton}
           logo={chrome.logo}
+          previews={previews}
           phone={chrome.showPhoneInHeader ? { label: business.phone, href: business.phoneHref } : undefined}
         />
         <main id="main">{children}</main>

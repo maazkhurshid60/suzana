@@ -2,7 +2,9 @@ import { cache } from 'react';
 import { contact as localContact, pages as localPageMap } from '@/content/pages';
 import { business as localBusiness, chrome as localChrome } from '@/content/site';
 import type { Business, ContactContent, PageContent, SiteChrome } from '@/content/types';
+import type { SanityImageSource } from '@sanity/image-url';
 import { client, SANITY_TAG } from '@/sanity/client';
+import { imageUrl } from '@/sanity/image';
 import {
   mapBusiness,
   mapChrome,
@@ -64,6 +66,21 @@ const CHROME_QUERY = `*[_id == "siteChrome"][0]{
 export const getChrome = cache(async (): Promise<SiteChrome> => {
   const doc = (await fetchSanity(CHROME_QUERY)) as SanityChrome | null;
   return doc ? mapChrome(doc, localChrome) : localChrome;
+});
+
+export type MenuPreview = { sub: string; image?: string };
+
+/** Each page's sub-headline and photo, keyed by address, for the header menu's previews. One small query. */
+export const getMenuPreviews = cache(async (): Promise<Record<string, MenuPreview>> => {
+  if (await sanityHasPages()) {
+    const docs = (await fetchSanity('*[_type == "page" && defined(path)]{ path, "sub": hero.sub, "image": hero.backgroundImage }')) as {
+      path: string;
+      sub?: string;
+      image?: SanityImageSource & { asset?: unknown };
+    }[];
+    return Object.fromEntries(docs.map((d) => [d.path, { sub: d.sub ?? '', image: d.image?.asset ? imageUrl(d.image, 900) : undefined }]));
+  }
+  return Object.fromEntries(localPages.map((p) => [p.path, { sub: p.hero.sub, image: p.hero.image }]));
 });
 
 export async function getContactPage(): Promise<ContactContent> {

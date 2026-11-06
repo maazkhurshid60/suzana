@@ -27,24 +27,24 @@ function isEmpty(block: Block) {
   return false;
 }
 
-function renderBlock(block: Block, tone: Tone, key: number) {
+function renderBlock(block: Block, tone: Tone, key: number, n?: number) {
   switch (block.type) {
     case 'prose':
-      return <ProseBlock key={key} block={block} tone={tone} />;
+      return <ProseBlock key={key} block={block} tone={tone} n={n} />;
     case 'offerings':
-      return <OfferingsBlock key={key} block={block} tone={tone} />;
+      return <OfferingsBlock key={key} block={block} tone={tone} n={n} />;
     case 'projects':
-      return <ProjectsBlock key={key} block={block} tone={tone} />;
+      return <ProjectsBlock key={key} block={block} tone={tone} n={n} />;
     case 'places':
-      return <PlacesBlock key={key} block={block} tone={tone} />;
+      return <PlacesBlock key={key} block={block} tone={tone} n={n} />;
     case 'glance':
-      return <GlanceBlock key={key} block={block} tone={tone} />;
+      return <GlanceBlock key={key} block={block} tone={tone} n={n} />;
     case 'faq':
-      return <FaqBlock key={key} block={block} tone={tone} />;
+      return <FaqBlock key={key} block={block} tone={tone} n={n} />;
     case 'image':
       return <ImageBlock key={key} block={block} tone={tone} />;
     case 'testimonials':
-      return <TestimonialsBlock key={key} block={block} tone={tone} />;
+      return <TestimonialsBlock key={key} block={block} tone={tone} n={n} />;
   }
 }
 
@@ -53,10 +53,12 @@ export async function ContentPage({ page, variant = 'inner' }: { page: PageConte
   const visible = page.blocks.filter((block) => !isEmpty(block));
   const crumbs = breadcrumbs(chrome.menu, page.path, page.hero.h1, page.eyebrow);
   const group = findMenuGroup(chrome.menu, page.path);
+  // Sections with a heading are numbered 01, 02... in page order. Photos are not counted.
+  const numbers = new Map<Block, number>(visible.filter((b) => b.type !== 'image').map((b, i) => [b, i + 1]));
   return (
     <>
       {variant === 'home' ? (
-        <HomeHero hero={page.hero} labels={chrome.buttonLabels} video={chrome.heroVideo} />
+        <HomeHero hero={page.hero} labels={chrome.buttonLabels} video={chrome.heroVideo} places={chrome.menu.find((m) => m.label === 'Areas')?.links} />
       ) : (
         <>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs, business.siteUrl)) }} />
@@ -64,15 +66,14 @@ export async function ContentPage({ page, variant = 'inner' }: { page: PageConte
         </>
       )}
       {REVIEW_MODE && page.review?.length ? (
-        <div className="bg-neutral-50 px-4 pb-6">
+        <div className="bg-paper px-4 pb-6">
           <Flags flags={page.review} className="mx-auto max-w-3xl" />
         </div>
       ) : null}
-      {visible.map((block, i) => renderBlock(block, i % 2 === 0 ? 'muted' : 'light', i))}
+      {visible.map((block, i) => renderBlock(block, 'light', i, numbers.get(block)))}
       {group && group.siblings.length > 0 && (
-        <KeepExploring label={group.label} links={group.siblings} tone={visible.length % 2 === 0 ? 'muted' : 'light'} />
+        <KeepExploring label={group.label} links={group.siblings} tone="light" />
       )}
-      <div className="h-10 bg-neutral-50 md:h-14" />
       <CtaBand heading={page.cta.heading} text={page.cta.text} />
     </>
   );
