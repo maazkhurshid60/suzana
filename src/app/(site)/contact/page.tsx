@@ -12,6 +12,8 @@ export async function generateMetadata() {
 export default async function ContactPage() {
   const [contact, business, chrome] = await Promise.all([getContactPage(), getBusiness(), getChrome()]);
 
+  const intro = Boolean(contact.whatHappens.heading || contact.whatHappens.body.length);
+
   const details = [
     {
       label: 'Phone',
@@ -69,15 +71,20 @@ export default async function ContactPage() {
       <Section tone="light">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
           <div>
-            <SectionNumber n={1} className="mb-7" />
-            <SectionHeading>{contact.whatHappens.heading}</SectionHeading>
-            {contact.whatHappens.body.map((para) => (
-              <p key={para} className="mt-6 text-base leading-[1.75] text-muted md:text-[17px]">
-                {para}
-              </p>
-            ))}
+            {/* Only shown while the dashboard has wording for it. Clearing both fields removes the section. */}
+            {intro && (
+              <div className="mb-16">
+                <SectionNumber n={1} className="mb-7" />
+                {contact.whatHappens.heading && <SectionHeading>{contact.whatHappens.heading}</SectionHeading>}
+                {contact.whatHappens.body.map((para) => (
+                  <p key={para} className="mt-6 text-base leading-[1.75] text-muted md:text-[17px]">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )}
 
-            <SectionNumber n={2} className="mb-7 mt-16" />
+            <SectionNumber n={intro ? 2 : 1} className="mb-7" />
             <h2 className="text-[2.25rem] font-light leading-tight text-ink md:text-[2.75rem]">{contact.getInTouchHeading}</h2>
             <dl className="mt-8 border-t border-ink/80">
               {details.map(({ label, value }) => (
@@ -91,7 +98,7 @@ export default async function ContactPage() {
           </div>
 
           <div>
-            <SectionNumber n={3} className="mb-7" />
+            <SectionNumber n={intro ? 3 : 2} className="mb-7" />
             <h2 className="mb-8 text-[2.25rem] font-light leading-tight text-ink md:text-[2.75rem]">{contact.formHeading}</h2>
             <ContactForm stages={contact.stages} phone={business.phone} />
             <Flags flags={contact.formFlags} className="mt-4" />

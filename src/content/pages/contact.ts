@@ -18,14 +18,8 @@ export const contact: ContactContent = {
       text: 'This page runs from its own Contact instructions document, which is not in the consolidated reference. Reconcile the copy and form against it before launch. If the two disagree, that document wins.',
     },
   ],
-  whatHappens: {
-    heading: 'What happens',
-    body: [
-      'You talk to Gar. Then you walk the site with him, whatever stage it is at, whether that is raw land, a house you are thinking of buying, or a set of drawings close to final.',
-      'There is no estimate form on this site and no automated quote. A budget gets built line by line from completed architectural and engineering drawings, which is a later conversation and a longer one.',
-      'If the project is not a fit, he will say so and point you somewhere better. That is worth more to both of us than a meeting that goes nowhere.',
-    ],
-  },
+  // Removed at the client's request, November 2026.
+  whatHappens: { heading: '', body: [] },
   getInTouchHeading: 'Get in touch',
   detailsFlags: [{
     kind: 'input',

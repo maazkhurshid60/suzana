@@ -26,6 +26,11 @@ type SanityProject = {
   year: string;
   summary?: string;
   photo?: SanityPhoto;
+  slug?: { current?: string };
+  architect?: string;
+  kind?: string;
+  description?: string;
+  gallery?: (SanityImageSource & { asset?: unknown; alt?: string; caption?: string })[];
   permissionOnFile?: boolean;
 };
 // Section shapes are validated by the Studio schema, so the mapper reads them loosely.
@@ -53,6 +58,7 @@ export type SanityChrome = {
   notFound?: Partial<SiteChrome['notFound']>;
   reviewNotes?: SanityNote[];
 };
+export type { SanityProject };
 export type SanityContact = {
   meta?: { title: string; description: string };
   h1?: string;
@@ -95,7 +101,7 @@ function photo(slot?: SanityPhoto): ImageSlot | undefined {
   return { label };
 }
 
-function project(doc: SanityProject): Project {
+export function project(doc: SanityProject): Project {
   return {
     id: doc._id.replace(/^project-/, ''),
     name: doc.name,
@@ -103,6 +109,14 @@ function project(doc: SanityProject): Project {
     year: doc.year,
     summary: doc.summary,
     photo: photo(doc.photo),
+    slug: doc.slug?.current || undefined,
+    architect: doc.architect || undefined,
+    kind: doc.kind || undefined,
+    // Blank lines in the dashboard field separate paragraphs.
+    description: doc.description?.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+    gallery: (doc.gallery ?? [])
+      .filter((g) => g?.asset)
+      .map((g) => ({ src: imageUrl(g, 2000)!, alt: g.alt, caption: g.caption })),
     permissionOnFile: Boolean(doc.permissionOnFile),
   };
 }
@@ -255,8 +269,9 @@ export function mapContact(doc: SanityContact, fallback: ContactContent): Contac
     heroImage: doc.heroImage?.asset ? imageUrl(doc.heroImage, 2400) : fallback.heroImage,
     review: notes(doc.reviewNotes),
     whatHappens: {
-      heading: doc.whatHappensHeading ?? fallback.whatHappens.heading,
-      body: doc.whatHappens?.length ? doc.whatHappens : fallback.whatHappens.body,
+      // Cleared in the dashboard means gone from the page, so these do not fall back.
+      heading: doc.whatHappensHeading ?? '',
+      body: doc.whatHappens ?? [],
     },
     getInTouchHeading: doc.getInTouchHeading ?? fallback.getInTouchHeading,
     detailsFlags: notes(doc.detailsNotes),

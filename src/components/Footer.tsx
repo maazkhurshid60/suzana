@@ -5,47 +5,59 @@ import { Flags } from './Flags';
 
 export async function Footer() {
   const [business, chrome] = await Promise.all([getBusiness(), getChrome()]);
+  // Address, phone and hours sit under the "Get in touch" column (or the last column if it is renamed).
+  // Only the Charter Oak address publishes.
+  const found = chrome.footerColumns.findIndex((c) => /touch|contact/i.test(c.title));
+  const contactColumn = found >= 0 ? found : chrome.footerColumns.length - 1;
+  const contactDetails = (
+    <address className="not-italic">
+      <div className="mt-6 space-y-5 font-mono text-[12px] uppercase leading-relaxed tracking-[0.14em] text-paper/60">
+        <p>
+          {business.street}
+          <br />
+          {business.locality}, {business.region} {business.postalCode}
+        </p>
+        <p>
+          <a href={business.phoneHref} className="text-paper transition-colors hover:text-bronze-light">
+            {business.phone}
+          </a>
+          {business.email && (
+            <>
+              <br />
+              <a href={`mailto:${business.email}`} className="normal-case tracking-[0.06em] text-paper transition-colors hover:text-bronze-light">
+                {business.email}
+              </a>
+            </>
+          )}
+        </p>
+        <p>
+          {business.hours}
+          <br />
+          {business.weekends}
+        </p>
+      </div>
+    </address>
+  );
   return (
     <footer className="bg-ink text-paper">
       <div className="mx-auto w-full max-w-site border-t border-paper/10 px-5 pb-10 pt-16 md:px-10 md:pt-24">
         <div className="grid gap-14 lg:grid-cols-[1.2fr_2fr] lg:gap-24">
-          {/* Name, address, phone. Only the Charter Oak address publishes. */}
-          <address className="not-italic">
+          <div>
             <Image src={chrome.logo.src} alt={chrome.logo.alt} width={chrome.logo.width} height={chrome.logo.height} className="h-14 w-auto invert" />
             <p className="mt-8 max-w-xs font-heading text-[1.75rem] font-light leading-snug text-paper">{chrome.footerNote || business.legalName}</p>
-            <div className="mt-8 space-y-5 font-mono text-[12px] uppercase leading-relaxed tracking-[0.14em] text-paper/60">
-              <p>
-                {business.street}
-                <br />
-                {business.locality}, {business.region} {business.postalCode}
-              </p>
-              <p>
-                <a href={business.phoneHref} className="text-paper transition-colors hover:text-bronze-light">
-                  {business.phone}
-                </a>
-                {business.email && (
-                  <>
-                    <br />
-                    <a href={`mailto:${business.email}`} className="normal-case tracking-[0.06em] text-paper transition-colors hover:text-bronze-light">
-                      {business.email}
-                    </a>
-                  </>
-                )}
-              </p>
-              <p>
-                {business.hours}
-                <br />
-                {business.weekends}
-              </p>
-            </div>
-          </address>
+          </div>
 
           <div
             className="grid grid-cols-2 gap-10 sm:[grid-template-columns:var(--footer-cols)]"
             style={{ '--footer-cols': `repeat(${Math.max(chrome.footerColumns.length, 1)}, minmax(0, 1fr))` } as React.CSSProperties}
           >
-            {chrome.footerColumns.map((column) => (
-              <FooterColumn key={column.title} title={column.title} links={column.links} />
+            {chrome.footerColumns.map((column, i) => (
+              <FooterColumn
+                key={column.title}
+                title={column.title}
+                links={column.links}
+                details={i === contactColumn ? contactDetails : undefined}
+              />
             ))}
           </div>
         </div>
@@ -63,7 +75,7 @@ export async function Footer() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+function FooterColumn({ title, links, details }: { title: string; links: { label: string; href: string }[]; details?: React.ReactNode }) {
   return (
     <nav aria-label={title}>
       <p className="eyebrow !text-bronze-light">{title}</p>
@@ -76,6 +88,7 @@ function FooterColumn({ title, links }: { title: string; links: { label: string;
           </li>
         ))}
       </ul>
+      {details}
     </nav>
   );
 }

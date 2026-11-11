@@ -48,6 +48,7 @@ const placeholder = (file: string, label: string) => ({
 export const projects = {
   'quail-camp': {
     id: 'quail-camp',
+    slug: 'quail-camp-estate',
     name: 'Quail Camp Estate',
     location: 'St. Helena',
     year: '2023',
@@ -56,6 +57,7 @@ export const projects = {
   },
   'contemporary-farmhouse': {
     id: 'contemporary-farmhouse',
+    slug: 'contemporary-farmhouse',
     name: 'Contemporary Farmhouse',
     location: 'St. Helena',
     year: '2026',
@@ -64,6 +66,7 @@ export const projects = {
   },
   'mt-veeder': {
     id: 'mt-veeder',
+    slug: 'mt-veeder-modern',
     name: 'Mt. Veeder Modern',
     location: 'Napa',
     year: '2026',
@@ -72,6 +75,7 @@ export const projects = {
   },
   bondi: {
     id: 'bondi',
+    slug: 'bondi-beach-house',
     name: 'Bondi Beach House',
     location: 'St. Helena',
     year: '2024',
@@ -106,6 +110,7 @@ export const chrome: SiteChrome = {
   menu: [
     { label: 'Services', links: services },
     { label: 'How we work', href: '/how-we-work/' },
+    { label: 'Our work', href: '/work/' },
     { label: 'Areas', links: areas },
     { label: 'Contact', href: '/contact/' },
   ],

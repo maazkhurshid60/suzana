@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { contact as localContact, pages as localPageMap } from '@/content/pages';
-import { business as localBusiness, chrome as localChrome } from '@/content/site';
-import type { Business, ContactContent, PageContent, SiteChrome } from '@/content/types';
+import { business as localBusiness, chrome as localChrome, projects as localProjects } from '@/content/site';
+import type { Business, ContactContent, PageContent, Project, SiteChrome } from '@/content/types';
 import type { SanityImageSource } from '@sanity/image-url';
 import { client, SANITY_TAG } from '@/sanity/client';
 import { imageUrl } from '@/sanity/image';
@@ -10,9 +10,11 @@ import {
   mapChrome,
   mapContact,
   mapPage,
+  project,
   type SanityChrome,
   type SanityContact,
   type SanityPage,
+  type SanityProject,
 } from '@/sanity/mappers';
 
 // Single entry point for content. Reads from Sanity when it is configured and has pages,
@@ -49,6 +51,19 @@ export async function getPage(path: string): Promise<PageContent | null> {
     return doc ? mapPage(doc) : null;
   }
   return localPages.find((p) => p.path === path) ?? null;
+}
+
+/** Every project, newest first. The pages filter out the ones without written permission. */
+export const getProjects = cache(async (): Promise<Project[]> => {
+  if (await sanityHasPages()) {
+    const docs = (await fetchSanity('*[_type == "project"] | order(year desc, name asc)')) as SanityProject[];
+    return docs.map(project);
+  }
+  return Object.values(localProjects);
+});
+
+export async function getProject(slug: string): Promise<Project | null> {
+  return (await getProjects()).find((p) => p.slug === slug) ?? null;
 }
 
 export const getBusiness = cache(async (): Promise<Business> => {

@@ -40,6 +40,15 @@ export type Project = {
   /** Default description, used where a page does not write its own. */
   summary?: string;
   photo?: ImageSlot;
+  /** Address of the project's own page under /work/. Without one the project has no page. */
+  slug?: string;
+  architect?: string;
+  /** For example "Private residence". */
+  kind?: string;
+  /** The longer write-up on the project's page, one entry per paragraph. */
+  description?: string[];
+  /** Further photos, shown as a gallery on the project's page. */
+  gallery?: { src: string; alt?: string; caption?: string }[];
   /** Guardrail: a project without written client permission never appears on the public site. */
   permissionOnFile: boolean;
 };

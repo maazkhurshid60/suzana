@@ -98,7 +98,13 @@ function ProjectCard({ entry, idx, lead }: { entry: ProjectEntry; idx: number; l
         <span className="font-mono text-[11px] tracking-[0.2em] text-muted">{String(idx + 1).padStart(2, '0')}</span>
       </div>
       <h3 className={`mt-3 leading-tight text-ink ${lead ? 'text-[2.1rem] md:text-[2.6rem]' : 'text-[1.7rem]'}`}>
-        {project.name}
+        {project.slug ? (
+          <Link href={`/work/${project.slug}/`} className="transition-colors hover:text-bronze">
+            {project.name}
+          </Link>
+        ) : (
+          project.name
+        )}
         {draft && <DraftChip />}
       </h3>
       {(text ?? project.summary) && <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">{text ?? project.summary}</p>}
