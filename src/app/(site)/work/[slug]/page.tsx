@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CtaBand } from '@/components/CtaBand';
+import { ProjectGallery } from '@/components/ProjectGallery';
 import { Reveal } from '@/components/Reveal';
 import { getProject, getProjects } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
@@ -36,6 +37,14 @@ export default async function ProjectPage({ params }: Props) {
   const next = others[(others.findIndex((p) => p.id === project.id) + 1) % others.length];
   const cover = hasPhoto(project.photo) ? project.photo : undefined;
   const details = [project.location, project.architect, project.kind, project.year].filter(Boolean);
+  const specs = (
+    [
+      ['Architect', project.architect],
+      ['Builder', 'Gar Rector & Associates'],
+      ['Location', project.location],
+      ['Completed', project.year],
+    ] as [string, string | undefined][]
+  ).filter((s): s is [string, string] => Boolean(s[1]));
 
   return (
     <>
@@ -82,29 +91,30 @@ export default async function ProjectPage({ params }: Props) {
         <section className="bg-paper">
           <div className="mx-auto w-full max-w-site border-t border-line px-5 py-16 md:px-10 md:py-24">
             <p className="eyebrow">Gallery</p>
-            {/* Every third photo runs full width, the rest sit in pairs, so the gallery reads like a monograph. */}
-            <Reveal className="mt-10 grid gap-6 md:grid-cols-2">
-              {project.gallery.map((photo, i) => {
-                const wide = i % 3 === 0;
-                return (
-                  <figure key={photo.src} className={wide ? 'md:col-span-2' : ''}>
-                    <div className={`relative overflow-hidden bg-paper-deep ${wide ? 'aspect-[16/10] md:aspect-[16/8]' : 'aspect-[4/5]'}`}>
-                      <Image src={photo.src} alt={photo.alt ?? ''} fill sizes={wide ? '(min-width: 1320px) 1240px, 100vw' : '(min-width: 768px) 50vw, 100vw'} className="object-cover" />
-                    </div>
-                    {photo.caption && <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">{photo.caption}</figcaption>}
-                  </figure>
-                );
-              })}
+            <Reveal className="mt-10">
+              <ProjectGallery photos={project.gallery} />
             </Reveal>
           </div>
         </section>
       ) : null}
 
+      {/* Project details, as on the Hobbs project pages. */}
+      <section className="bg-paper">
+        <dl className="mx-auto grid w-full max-w-site gap-x-10 gap-y-6 border-t border-line px-5 py-14 sm:grid-cols-2 md:px-10 lg:grid-cols-4">
+          {specs.map(([label, value]) => (
+            <div key={label}>
+              <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze">{label}</dt>
+              <dd className="mt-2 font-heading text-xl text-ink">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
       <section className="bg-paper">
         <div className="mx-auto flex w-full max-w-site flex-col gap-8 border-t border-line px-5 py-14 md:flex-row md:items-center md:justify-between md:px-10">
           <Link href="/work/" className="text-link self-start text-ink hover:text-bronze">
             <ArrowLeft className="h-3.5 w-3.5" strokeWidth={1.5} />
-            All work
+            Our work
           </Link>
           {next && next.id !== project.id && (
             <Link href={`/work/${next.slug}/`} className="group text-right">
