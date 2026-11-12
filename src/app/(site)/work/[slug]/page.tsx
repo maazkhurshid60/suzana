@@ -91,9 +91,9 @@ export default async function ProjectPage({ params }: Props) {
         <section className="bg-paper">
           <div className="mx-auto w-full max-w-site border-t border-line px-5 py-16 md:px-10 md:py-24">
             <p className="eyebrow">Gallery</p>
-            <Reveal className="mt-10">
+            <div className="mt-10">
               <ProjectGallery photos={project.gallery} />
-            </Reveal>
+            </div>
           </div>
         </section>
       ) : null}
