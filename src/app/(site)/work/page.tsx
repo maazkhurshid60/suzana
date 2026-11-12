@@ -25,8 +25,8 @@ export function generateMetadata() {
 
 /** Every project with written permission on file, each opening to its own page. */
 export default async function WorkPage() {
-  // Projects with photos lead; the first three are featured.
-  const projects = (await getProjects()).filter(isPublishable).sort((a, b) => Number(hasPhoto(b.photo)) - Number(hasPhoto(a.photo)));
+  // Projects with the fullest galleries lead; the first three are featured.
+  const projects = (await getProjects()).filter(isPublishable).sort((a, b) => (b.gallery?.length ?? 0) - (a.gallery?.length ?? 0) || Number(hasPhoto(b.photo)) - Number(hasPhoto(a.photo)));
   const featured = projects.slice(0, 3);
   const rest = projects.slice(3);
   return (
