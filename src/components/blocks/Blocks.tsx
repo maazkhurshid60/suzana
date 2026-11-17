@@ -80,14 +80,14 @@ export function OfferingsBlock({ block, tone, n }: Props<'offerings'>) {
   );
 }
 
-function ProjectCard({ entry, idx, lead }: { entry: ProjectEntry; idx: number; lead?: boolean }) {
+function ProjectCard({ entry, idx }: { entry: ProjectEntry; idx: number }) {
   const { project, text, draft } = entry;
   return (
     <article className="group">
       {hasPhoto(project.photo) && project.photo && (
         <ImageFrame
           image={project.photo}
-          className={`${lead ? 'aspect-[4/3]' : 'aspect-[16/10]'} [&_img]:transition-transform [&_img]:duration-[1.2s] group-hover:[&_img]:scale-[1.03]`}
+          className={`aspect-[4/3] [&_img]:transition-transform [&_img]:duration-[1.2s] group-hover:[&_img]:scale-[1.03]`}
         />
       )}
       <div className="mt-6 flex items-baseline justify-between gap-6 border-t border-line pt-5">
@@ -97,7 +97,7 @@ function ProjectCard({ entry, idx, lead }: { entry: ProjectEntry; idx: number; l
         </p>
         <span className="font-mono text-[11px] tracking-[0.2em] text-muted">{String(idx + 1).padStart(2, '0')}</span>
       </div>
-      <h3 className={`mt-3 leading-tight text-ink ${lead ? 'text-[2.1rem] md:text-[2.6rem]' : 'text-[1.7rem]'}`}>
+      <h3 className={`mt-3 leading-tight text-ink text-[1.9rem] md:text-[2.1rem]`}>
         {project.slug ? (
           <Link href={`/work/${project.slug}/`} className="transition-colors hover:text-bronze">
             {project.name}
@@ -118,11 +118,10 @@ function ProjectCard({ entry, idx, lead }: { entry: ProjectEntry; idx: number; l
   );
 }
 
-/** Named projects: one lead plate and the rest beside it, like a monograph spread. */
+/** Named projects in an even two-column grid, every card the same size. */
 export function ProjectsBlock({ block, tone, n }: Props<'projects'>) {
   const items = block.items.filter((entry) => isPublishable(entry.project));
   if (!items.length && !hasPhoto(block.image) && !REVIEW_MODE) return null;
-  const [lead, ...rest] = items;
   return (
     <Section id={block.id} tone={tone}>
       <Reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -138,18 +137,11 @@ export function ProjectsBlock({ block, tone, n }: Props<'projects'>) {
         )}
       </Reveal>
       {block.image && <ImageFrame image={block.image} className="mt-14 aspect-[16/9] md:aspect-[21/9]" />}
-      {lead && (
-        <Reveal className={`mt-14 grid gap-14 ${rest.length ? 'lg:grid-cols-12 lg:gap-12' : ''}`}>
-          <div className={rest.length ? 'lg:col-span-7' : 'max-w-4xl'}>
-            <ProjectCard entry={lead} idx={0} lead />
-          </div>
-          {rest.length > 0 && (
-            <div className="grid gap-14 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:gap-12">
-              {rest.map((entry, i) => (
-                <ProjectCard key={entry.project.id} entry={entry} idx={i + 1} />
-              ))}
-            </div>
-          )}
+      {items.length > 0 && (
+        <Reveal className="mt-14 grid gap-14 md:grid-cols-2 md:gap-x-12 md:gap-y-16">
+          {items.map((entry, i) => (
+            <ProjectCard key={entry.project.id} entry={entry} idx={i} />
+          ))}
         </Reveal>
       )}
       <Flags flags={block.flags} className="mt-8 max-w-3xl" />
