@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react';
 import type { Link as NavLink, Logo, MenuItem } from '@/content/types';
 import type { MenuPreview } from '@/lib/content';
 
@@ -70,7 +70,7 @@ function MegaMenu({ item, pathname, previews, button }: { item: MenuItem; pathna
 
         <figure className="flex flex-col">
           {/* Every photo loads when the panel opens, so moving down the list crossfades without a gap. */}
-          <div className="relative aspect-[4/3] overflow-hidden bg-paper-deep">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-paper-deep">
             {links.map((link) =>
               previews[link.href]?.image ? (
                 <Image
@@ -100,15 +100,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   // Close menus on navigation, Escape and outside clicks.
   useEffect(() => {
@@ -134,11 +126,11 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
     };
   }, []);
 
-  // Over the homepage film the header is transparent with white type, until the page moves or a menu opens.
-  const overHero = pathname === '/' && !scrolled && !mobileOpen && !openGroup;
+  // The header is always solid white with dark type, as in the Readdy design.
+  const overHero = false;
   const isActive = (item: MenuItem) => (item.links ? item.links.some((l) => pathname === l.href) : pathname === item.href);
   const linkTone = overHero ? 'text-white/85 hover:text-white' : 'text-ink/75 hover:text-ink';
-  const navText = 'font-label text-[12px] font-medium uppercase tracking-[0.16em]';
+  const navText = 'font-label text-[13px] font-medium tracking-[0.06em]';
 
   const renderItem = (item: MenuItem) =>
     item.links ? (
@@ -149,7 +141,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
           aria-expanded={openGroup === item.label}
           aria-haspopup="true"
           onClick={() => setOpenGroup((g) => (g === item.label ? null : item.label))}
-          className={`flex h-[84px] items-center gap-1.5 leading-none transition-colors ${navText} ${linkTone} ${isActive(item) ? (overHero ? '!text-white' : '!text-bronze') : ''}`}
+          className={`flex h-[86px] items-center gap-1.5 leading-none transition-colors ${navText} ${linkTone} ${isActive(item) ? (overHero ? '!text-white' : '!text-bronze') : ''}`}
         >
           {item.label}
           <ChevronDown className={`h-3 w-3 transition-transform ${openGroup === item.label ? 'rotate-180' : ''}`} />
@@ -162,7 +154,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
         <Link
           href={item.href ?? '/'}
           aria-current={isActive(item) ? 'page' : undefined}
-          className={`flex h-[84px] items-center leading-none transition-colors ${navText} ${linkTone} ${isActive(item) ? (overHero ? '!text-white' : '!text-bronze') : ''}`}
+          className={`flex h-[86px] items-center leading-none transition-colors ${navText} ${linkTone} ${isActive(item) ? (overHero ? '!text-white' : '!text-bronze') : ''}`}
         >
           {item.label}
         </Link>
@@ -172,37 +164,31 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
-        overHero ? 'border-b border-white/15 bg-transparent' : 'border-b border-line bg-paper'
+        overHero ? 'border-b border-white/15 bg-transparent' : 'border-b border-black/5 bg-white/95 backdrop-blur-md'
       }`}
     >
       {/* Dims the page while a menu is open, so the panel reads as the one thing in focus. */}
-      {openGroup && <div className="menu-fade fixed inset-x-0 bottom-0 top-[84px] -z-10 hidden bg-ink/45 lg:block" aria-hidden="true" />}
-      <nav ref={navRef} className="mx-auto flex h-[84px] max-w-site items-center justify-between gap-8 px-5 md:px-10">
-        <Link href="/" aria-label={`${logo.alt} home`} className="flex shrink-0 items-center">
-          <Image
-            src={logo.src}
-            alt={logo.alt}
-            width={logo.width}
-            height={logo.height}
-            priority
-            className={`h-11 w-auto transition-[filter] duration-500 ${overHero ? 'invert' : ''}`}
-          />
+      {openGroup && <div className="menu-fade fixed inset-x-0 bottom-0 top-[86px] -z-10 hidden bg-ink/45 lg:block" aria-hidden="true" />}
+      <nav ref={navRef} className="mx-auto grid h-[86px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 md:px-8 lg:px-10">
+        <ul className="hidden items-center gap-8 lg:flex">{menu.slice(0, Math.ceil(menu.length / 2)).map(renderItem)}</ul>
+
+        <Link href="/" aria-label={`${logo.alt} home`} className="col-start-1 flex shrink-0 items-center lg:col-start-2">
+          <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} priority className="h-11 w-auto" />
         </Link>
 
-        <ul className="hidden items-center gap-10 lg:flex">{menu.map(renderItem)}</ul>
-
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center justify-end gap-8 lg:flex">
+          <ul className="flex items-center gap-8">{menu.slice(Math.ceil(menu.length / 2)).map(renderItem)}</ul>
           {phone && (
-            <a
-              href={phone.href}
-              className={`hidden whitespace-nowrap border-b border-transparent pb-[0.35rem] font-mono text-[12px] tracking-[0.12em] transition-colors xl:inline ${linkTone}`}
-            >
+            <a href={phone.href} className={`hidden whitespace-nowrap font-label text-[13px] tracking-[0.04em] transition-colors xl:inline ${linkTone}`}>
               {phone.label}
             </a>
           )}
-          <Link href={button.href} className={`text-link whitespace-nowrap ${overHero ? 'text-white' : 'text-ink hover:text-bronze'}`}>
+          <Link
+            href={button.href}
+            className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-2.5 font-label text-[13px] font-semibold tracking-[0.04em] text-white transition-colors hover:bg-neutral-800"
+          >
             {button.label}
-            <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
@@ -211,14 +197,14 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
-          className={`flex h-11 w-11 items-center justify-center border lg:hidden ${overHero ? 'border-white/40 text-white' : 'border-ink/25 text-ink'}`}
+          className={`col-start-3 flex h-11 w-11 items-center justify-center justify-self-end rounded-full border lg:hidden ${overHero ? 'border-white/40 text-white' : 'border-ink/25 text-ink'}`}
         >
           {mobileOpen ? <X className="h-5 w-5" strokeWidth={1.5} /> : <Menu className="h-5 w-5" strokeWidth={1.5} />}
         </button>
       </nav>
 
       {mobileOpen && (
-        <div className="max-h-[calc(100dvh-84px)] overflow-y-auto border-t border-line bg-paper lg:hidden">
+        <div className="max-h-[calc(100dvh-86px)] overflow-y-auto border-t border-line bg-paper lg:hidden">
           <div className="px-5 pb-8 pt-2">
             {menu.map((item) =>
               item.links ? (
@@ -249,7 +235,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
             <div className="flex flex-col gap-3 pt-7">
               <Link
                 href={button.href}
-                className="inline-flex w-full items-center justify-center gap-3 bg-ink px-6 py-4 font-mono text-[12px] uppercase tracking-[0.18em] text-paper"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-black px-6 py-4 font-label text-sm font-semibold text-white"
               >
                 {button.label}
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
@@ -257,7 +243,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
               {phone && (
                 <a
                   href={phone.href}
-                  className="inline-flex w-full items-center justify-center border border-ink/25 px-6 py-4 font-mono text-[12px] uppercase tracking-[0.18em] text-ink"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-ink/25 px-6 py-4 font-label text-sm font-semibold text-ink"
                 >
                   Call {phone.label}
                 </a>

@@ -13,7 +13,7 @@ export function ProjectTile({ project, wide = false, tall = false, priority = fa
   const credit = tall ? undefined : project.architect ?? project.kind;
   const body = (
     <>
-      <div className={`relative overflow-hidden bg-paper-deep ${wide ? 'aspect-[4/3] md:aspect-[16/8]' : tall ? 'aspect-[4/5]' : 'aspect-[4/3] md:aspect-[5/4]'}`}>
+      <div className={`relative overflow-hidden rounded-[24px] bg-paper-deep ${wide ? 'aspect-[4/3] md:aspect-[16/8]' : tall ? 'aspect-[4/5]' : 'aspect-[4/3] md:aspect-[5/4]'}`}>
         {photo?.src && (
           <Image
             src={photo.src}

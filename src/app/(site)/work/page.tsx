@@ -31,7 +31,7 @@ export default async function WorkPage() {
   const rest = projects.slice(3);
   return (
     <>
-      <section className="bg-paper pt-[84px]">
+      <section className="bg-paper pt-[86px]">
         <div className="mx-auto w-full max-w-site px-5 pb-14 pt-14 md:px-10 md:pb-20 md:pt-20">
           <p className="eyebrow">Our work</p>
           <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-20">

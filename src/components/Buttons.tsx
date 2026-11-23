@@ -3,12 +3,12 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 type Variant = 'light' | 'dark' | 'outline-light' | 'outline-dark';
 
-// Square, quiet buttons with small tracked capitals.
+// Rounded pill buttons, as in the Readdy design.
 const variants: Record<Variant, string> = {
-  light: 'bg-paper text-ink hover:bg-white',
-  dark: 'bg-ink text-paper hover:bg-bronze',
-  'outline-light': 'border border-white/45 text-white hover:border-white hover:bg-white hover:text-ink',
-  'outline-dark': 'border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-paper',
+  light: 'bg-white text-ink hover:bg-white/90',
+  dark: 'bg-ink text-white hover:bg-ink-soft',
+  'outline-light': 'border border-white/40 text-white backdrop-blur-sm hover:border-white hover:bg-white/10',
+  'outline-dark': 'border border-ink/25 text-ink hover:border-ink',
 };
 
 export function ButtonLink({
@@ -26,7 +26,7 @@ export function ButtonLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center gap-4 whitespace-nowrap px-7 py-4 font-mono text-[12px] uppercase tracking-[0.18em] transition-colors duration-300 ${variants[variant]}`}
+      className={`group inline-flex items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 font-label text-sm font-semibold tracking-wide transition-colors duration-300 ${variants[variant]}`}
     >
       {children}
       <Icon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />

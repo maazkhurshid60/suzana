@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-paper pt-[84px]">
+      <section className="bg-paper pt-[86px]">
         <div className="mx-auto w-full max-w-site px-5 pt-12 md:px-10 md:pt-16">
           <Link href="/work/" className="eyebrow transition-colors hover:text-ink">
             Selected work
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: Props) {
             ))}
           </ul>
           {cover?.src && (
-            <div className="relative mt-12 aspect-[16/10] overflow-hidden bg-paper-deep md:aspect-[16/8]">
+            <div className="relative mt-12 aspect-[16/10] overflow-hidden rounded-[28px] bg-paper-deep md:rounded-[36px] md:aspect-[16/8]">
               <Image src={cover.src} alt={cover.alt ?? ''} fill priority sizes="(min-width: 1320px) 1240px, 100vw" className="hero-photo object-cover" />
             </div>
           )}

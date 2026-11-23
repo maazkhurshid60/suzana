@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, DM_Mono, Inter } from 'next/font/google';
+import { Cormorant_Garamond, Inter } from 'next/font/google';
 import { Footer } from '@/components/Footer';
 import { MobileActionBar } from '@/components/MobileActionBar';
 import { ReviewBanner } from '@/components/Flags';
@@ -26,9 +26,6 @@ const heading = Cormorant_Garamond({
 // and Android, where visitors would otherwise see Arial.
 const body = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
 
-// Small capitals labels, captions and numbering, set like the notes on a drawing.
-const mono = DM_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' });
-
 export const metadata: Metadata = {
   metadataBase: new URL(localBusiness.siteUrl),
   title: { default: localBusiness.name, template: `%s | ${localBusiness.name}` },
@@ -36,7 +33,7 @@ export const metadata: Metadata = {
   robots: INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
 };
 
-export const viewport: Viewport = { themeColor: '#EEEBE5' };
+export const viewport: Viewport = { themeColor: '#F9F9FA' };
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const [business, chrome, previews] = await Promise.all([getBusiness(), getChrome(), getMenuPreviews()]);
@@ -72,7 +69,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     // data-scroll-behavior lets Next.js switch smooth scrolling off while it changes page,
     // so navigation jumps straight to the top instead of animating.
-    <html lang="en" className={`${heading.variable} ${body.variable} ${mono.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${heading.variable} ${body.variable}`} data-scroll-behavior="smooth">
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <a

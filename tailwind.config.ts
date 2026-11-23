@@ -1,24 +1,24 @@
 import type { Config } from 'tailwindcss';
 
-// Warm stone paper, near-black ink and one bronze accent taken from timber and millwork.
-// Square corners and hairline rules throughout: the site reads like a set of drawings.
+// The Readdy look: near-white surfaces, charcoal ink and a quiet grey accent,
+// rounded cards and pill buttons. "bronze" is kept as the token name for the accent.
 export default {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        paper: { DEFAULT: '#EEEBE5', deep: '#E4E0D8' },
-        ink: { DEFAULT: '#1B1A18', soft: '#2A2825' },
-        muted: '#635E56',
-        line: 'rgb(27 26 24 / 0.14)',
-        // Dark enough for small text on paper (5:1).
-        bronze: { DEFAULT: '#7A5C34', light: '#B08A57' },
+        paper: { DEFAULT: '#F9F9FA', deep: '#EFEFF1' },
+        ink: { DEFAULT: '#111113', soft: '#222226' },
+        muted: '#5E5E66',
+        line: 'rgb(17 17 19 / 0.08)',
+        // Dark enough for small text on paper (7:1).
+        bronze: { DEFAULT: '#4A4A52', light: '#B4B4BC' },
       },
       fontFamily: {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         heading: ['var(--font-heading)', 'Georgia', 'serif'],
         label: ['var(--font-body)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'Menlo', 'monospace'],
+        mono: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       maxWidth: { site: '1320px' },
     },

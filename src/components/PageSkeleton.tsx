@@ -8,7 +8,7 @@ function Bar({ className = '' }: { className?: string }) {
 export function PageSkeleton() {
   return (
     <div aria-busy="true" aria-label="Loading page" className="bg-paper">
-      <section className="pt-[84px]">
+      <section className="pt-[86px]">
         <div className="mx-auto grid w-full max-w-site gap-12 px-5 pb-16 pt-12 md:px-10 md:pb-16 md:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-20">
           <div>
             <Bar className="h-3 w-40" />

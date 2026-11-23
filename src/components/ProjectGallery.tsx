@@ -46,7 +46,7 @@ export function ProjectGallery({ photos }: { photos: Photo[] }) {
               <button
                 type="button"
                 onClick={() => setOpen(i)}
-                className={`group relative block w-full cursor-zoom-in overflow-hidden bg-paper-deep ${shape}`}
+                className={`group relative block w-full cursor-zoom-in overflow-hidden rounded-[20px] bg-paper-deep ${shape}`}
                 aria-label={`Open photo ${i + 1} of ${photos.length}`}
               >
                 <Image src={photo.src} alt={photo.alt ?? ''} fill sizes={sizes} className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.02]" />
