@@ -97,7 +97,7 @@ function photo(slot?: SanityPhoto): ImageSlot | undefined {
   if (!slot || (!slot.label && !slot.image?.asset && !slot.placeholderSrc)) return undefined;
   const label = slot.label ?? '';
   if (slot.image?.asset) return { label, alt: slot.alt, src: imageUrl(slot.image) };
-  if (slot.placeholderSrc) return { label, alt: slot.alt ?? '', src: slot.placeholderSrc, placeholder: true };
+  // Placeholder (AI/stock) images are never shown: only real uploaded photos.
   return { label };
 }
 

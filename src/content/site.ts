@@ -36,14 +36,9 @@ export const areas: Link[] = [
 
 // Every project starts without written permission on file (copy document item 5).
 // Projects without permission are hidden from the public build.
-// Photos are placeholders until the 2023 shoot originals arrive. They show in review and preview
-// builds and never in the public build.
-const placeholder = (file: string, label: string) => ({
-  label,
-  src: `/media/placeholders/${file}`,
-  alt: '',
-  placeholder: true,
-});
+// Offline fallback only: no photo here. The real project photos live in the dashboard.
+// (The old AI placeholder renders were removed so they can never appear on the site.)
+const placeholder = (_file: string, label: string) => ({ label, alt: '' });
 
 export const projects = {
   'quail-camp': {
