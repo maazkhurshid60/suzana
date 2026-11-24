@@ -32,19 +32,19 @@ function HeroCtas({ hero, labels, onDark }: { hero: Hero; labels: Labels; onDark
 export function HomeHero({ hero, labels, video, places = [] }: { hero: Hero; labels: Labels; video: string; places?: NavLink[] }) {
   return (
     <section className="bg-paper px-3 pb-10 pt-[98px] md:px-5 md:pb-14 md:pt-[106px] lg:px-6">
-      <div className="on-dark relative isolate flex min-h-[600px] max-h-[900px] flex-col overflow-hidden rounded-[28px] bg-ink text-white h-[calc(100svh-130px)] md:rounded-[36px]">
+      <div className="on-dark relative isolate flex min-h-[calc(100svh-130px)] flex-col overflow-hidden rounded-[28px] bg-ink text-white md:h-[calc(100svh-130px)] md:min-h-[600px] md:max-h-[900px] md:rounded-[36px]">
         {/* The built-in film has a still frame to show while it loads. A film uploaded in the dashboard starts on black. */}
         <HeroVideo src={video} poster={video === '/media/hero.mp4' ? '/media/hero-poster.jpg' : undefined} />
         <div className="absolute inset-0 -z-0 bg-gradient-to-b from-black/55 via-black/45 to-black/30" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 py-20 text-center">
+        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 py-16 text-center md:py-20">
           {hero.trust && (
             <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/25 px-5 py-2 font-label text-[11px] uppercase tracking-[0.28em] text-white/90 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
               {hero.trust}
             </p>
           )}
-          <h1 className="mt-8 text-[clamp(2.6rem,6.5vw,5.75rem)] font-light leading-[1.02] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+          <h1 className="mt-8 text-[clamp(2.25rem,6.5vw,5.75rem)] font-light leading-[1.02] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             {hero.h1}
           </h1>
           <p className="mt-7 max-w-2xl text-base font-light leading-relaxed text-white/85 md:text-lg">{hero.sub}</p>

@@ -57,6 +57,8 @@ export async function Footer() {
                 title={column.title}
                 links={column.links}
                 details={i === contactColumn ? contactDetails : undefined}
+                // On phones the contact column spans both grid columns, so the address and hours get the full width.
+                className={i === contactColumn ? 'col-span-2 sm:col-span-1' : undefined}
               />
             ))}
           </div>
@@ -75,9 +77,19 @@ export async function Footer() {
   );
 }
 
-function FooterColumn({ title, links, details }: { title: string; links: { label: string; href: string }[]; details?: React.ReactNode }) {
+function FooterColumn({
+  title,
+  links,
+  details,
+  className,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+  details?: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <nav aria-label={title}>
+    <nav aria-label={title} className={className}>
       <p className="eyebrow !text-bronze-light">{title}</p>
       <ul className="mt-6 space-y-3.5">
         {links.map((link) => (
