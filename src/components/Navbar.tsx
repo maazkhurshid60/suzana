@@ -169,7 +169,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
     >
       {/* Dims the page while a menu is open, so the panel reads as the one thing in focus. */}
       {openGroup && <div className="menu-fade fixed inset-x-0 bottom-0 top-[86px] -z-10 hidden bg-ink/45 lg:block" aria-hidden="true" />}
-      <nav ref={navRef} className="mx-auto grid h-[86px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 md:px-8 lg:px-10">
+      <nav ref={navRef} className="mx-auto grid h-[86px] w-full max-w-site grid-cols-[1fr_auto_1fr] items-center gap-6 px-4 md:px-10">
         <ul className="hidden items-center gap-8 lg:flex">{menu.slice(0, Math.ceil(menu.length / 2)).map(renderItem)}</ul>
 
         <Link href="/" aria-label={`${logo.alt} home`} className="col-start-1 flex shrink-0 items-center lg:col-start-2">

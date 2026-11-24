@@ -9,7 +9,9 @@ export async function CtaBand({ heading, text }: { heading: string; text: string
   const [business, chrome] = await Promise.all([getBusiness(), getChrome()]);
   return (
     <section className="bg-paper px-3 pb-6 pt-4 md:px-5 lg:px-6">
-      <Reveal className="on-dark mx-auto grid w-full gap-12 rounded-[28px] bg-ink px-6 py-20 text-paper md:rounded-[36px] md:px-14 md:py-28 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-24 lg:px-20">
+      <Reveal className="on-dark mx-auto w-full rounded-[28px] bg-ink px-6 py-20 text-paper md:rounded-[36px] md:px-14 md:py-28 lg:px-20">
+        {/* The card runs edge to edge like the hero; the content sits in the same 1240px column as the footer and every other section. */}
+        <div className="mx-auto grid w-full max-w-[1240px] gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-24">
         <div>
           <p className="eyebrow !text-bronze-light">Inquiries</p>
           <h2 className="mt-8 text-[clamp(2.75rem,5.5vw,5rem)] font-light leading-[1.02] text-paper">{heading}</h2>
@@ -25,6 +27,7 @@ export async function CtaBand({ heading, text }: { heading: string; text: string
               or call {business.phone}
             </a>
           </div>
+        </div>
         </div>
       </Reveal>
     </section>

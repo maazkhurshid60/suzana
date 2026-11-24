@@ -70,7 +70,8 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     // data-scroll-behavior lets Next.js switch smooth scrolling off while it changes page,
     // so navigation jumps straight to the top instead of animating.
     <html lang="en" className={`${heading.variable} ${body.variable}`} data-scroll-behavior="smooth">
-      <body>
+      {/* Browser extensions (ColorZilla, Grammarly and others) add attributes to <body> before React hydrates. */}
+      <body suppressHydrationWarning>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <a
           href="#main"
