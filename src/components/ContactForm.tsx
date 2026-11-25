@@ -4,7 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { CheckCircle2, Send } from 'lucide-react';
 
 const field =
-  'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none placeholder:text-muted/60 focus:border-ink focus:ring-0';
+  'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none placeholder:text-muted/60 focus:border-ink focus:ring-0 focus-visible:outline-none';
 const label = 'block font-mono text-[11px] uppercase tracking-[0.18em] text-bronze';
 
 export function ContactForm({ stages, phone }: { stages: string[]; phone: string }) {
@@ -61,23 +61,26 @@ export function ContactForm({ stages, phone }: { stages: string[]; phone: string
       <div className="grid gap-5">
         <div>
           <label htmlFor="name" className={label}>
-            Name
+            Name <span className="text-muted" aria-hidden="true">*</span>
           </label>
-          <input id="name" name="name" required autoComplete="name" className={field} />
+          <input id="name" name="name" required aria-required="true" autoComplete="name" className={field} />
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="phone" className={label}>
               Phone
             </label>
-            <input id="phone" name="phone" type="tel" autoComplete="tel" className={field} />
+            <input id="phone" name="phone" type="tel" autoComplete="tel" aria-describedby="contact-method-hint" className={field} />
           </div>
           <div>
             <label htmlFor="email" className={label}>
               Email
             </label>
-            <input id="email" name="email" type="email" autoComplete="email" className={field} />
+            <input id="email" name="email" type="email" autoComplete="email" aria-describedby="contact-method-hint" className={field} />
           </div>
+          <p id="contact-method-hint" className="-mt-2 font-mono text-[11px] normal-case tracking-normal text-muted sm:col-span-2">
+            Either one is fine.
+          </p>
         </div>
         <div>
           <label htmlFor="location" className={label}>
