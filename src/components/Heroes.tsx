@@ -32,10 +32,10 @@ function HeroCtas({ hero, labels, onDark }: { hero: Hero; labels: Labels; onDark
 export function HomeHero({ hero, labels, video, places = [] }: { hero: Hero; labels: Labels; video: string; places?: NavLink[] }) {
   return (
     <section className="bg-paper px-3 pb-10 pt-[98px] md:px-5 md:pb-14 md:pt-[106px] lg:px-6">
-      <div className="on-dark relative isolate flex min-h-[calc(100svh-130px)] flex-col overflow-hidden rounded-[28px] bg-ink text-white md:h-[calc(100svh-130px)] md:min-h-[600px] md:max-h-[900px] md:rounded-[36px]">
+      <div className="on-dark relative isolate flex min-h-[calc(100svh-130px)] flex-col overflow-hidden rounded-[28px] bg-ink text-white md:min-h-[min(max(600px,calc(100svh-130px)),900px)] md:rounded-[36px]">
         {/* The built-in film has a still frame to show while it loads. A film uploaded in the dashboard starts on black. */}
         <HeroVideo src={video} poster={video === '/media/hero.mp4' ? '/media/hero-poster.jpg' : undefined} />
-        <div className="absolute inset-0 -z-0 bg-gradient-to-b from-black/55 via-black/45 to-black/30" aria-hidden="true" />
+        <div className="absolute inset-0 -z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/45" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 py-16 text-center md:py-20">
           {hero.trust && (

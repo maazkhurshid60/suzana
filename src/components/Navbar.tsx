@@ -173,7 +173,7 @@ export function Navbar({ menu, button, logo, phone, previews = {} }: Props) {
         <ul className="hidden items-center gap-8 lg:flex">{menu.slice(0, Math.ceil(menu.length / 2)).map(renderItem)}</ul>
 
         <Link href="/" aria-label={`${logo.alt} home`} className="col-start-1 flex shrink-0 items-center lg:col-start-2">
-          <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} priority className="h-11 w-auto" />
+          <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} loading="eager" fetchPriority="high" className="h-11 w-auto" />
         </Link>
 
         <div className="hidden items-center justify-end gap-8 lg:flex">

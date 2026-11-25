@@ -17,6 +17,7 @@ import { CtaBand } from './CtaBand';
 import { Flags } from './Flags';
 import { HomeHero, PageHero } from './Heroes';
 import { KeepExploring } from './KeepExploring';
+import { ReaddyHome } from './home/ReaddyHome';
 
 /** Blocks that render nothing in the public build, so they do not take a background tone. */
 function isEmpty(block: Block) {
@@ -70,7 +71,8 @@ export async function ContentPage({ page, variant = 'inner' }: { page: PageConte
           <Flags flags={page.review} className="mx-auto max-w-3xl" />
         </div>
       ) : null}
-      {visible.map((block, i) => renderBlock(block, 'light', i, numbers.get(block)))}
+      {/* The homepage follows the original Readdy design's section order; inner pages run their blocks in turn. */}
+      {variant === 'home' ? <ReaddyHome page={page} chrome={chrome} /> : visible.map((block, i) => renderBlock(block, 'light', i, numbers.get(block)))}
       {group && group.siblings.length > 0 && (
         <KeepExploring label={group.label} links={group.siblings} tone="light" />
       )}
